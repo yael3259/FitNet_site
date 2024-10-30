@@ -1,0 +1,38 @@
+
+.basket{
+    width: 16%;
+    height: 78vh;
+    position: fixed;
+    top: 110px;
+    left: 2px;
+    padding-top: 20px;
+    /* background-color: rgba(255, 255, 255, 0.396); */
+    background-color: rgba(255, 255, 255, 0.806);
+    /* border: 5px dotted #3333334d; */
+    border-radius: 4px;
+    z-index: 999;
+    color: #096aea;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.basket:hover{
+    border-right: solid 2px #09d01083;
+}
+
+.cart-button {
+    background-color: rgba(255, 255, 255, 0.626);
+    border: 2px solid #09d010;
+    border-radius: 15px;
+    color: #09d010;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-button:hover {
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+    color: white;
+}

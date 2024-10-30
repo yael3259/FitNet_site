@@ -1,0 +1,74 @@
+.navbar-container {
+    position: fixed;
+    top: -5px;
+    right: 0;
+    background-color: rgba(10, 10, 10, 0.533);
+    padding-bottom: 17px;
+    padding-right: 0px;
+    padding-left: 20px;
+    font-size: 16px;
+    z-index: 1000;
+    width: 100%;
+}
+
+/* .logo {
+    color: rgb(255, 255, 255);
+    font-weight: lighter;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+} */
+
+/* .pp {
+    color: rgb(43, 255, 0);
+    font-size: 50px;
+} */
+
+.pic{
+    margin-left: 410px;
+}
+
+.overlay-navbar {
+    padding: 31px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-weight: lighter;
+    border-radius: 0%;
+    padding-bottom: 19px;
+    padding-left: 4px;
+    margin-bottom: 80px;
+    font-size: 14px;
+    letter-spacing: 1.7px;
+    text-decoration: none;
+}
+
+.overlay-navbar:hover {
+    color: rgba(149, 245, 144, 0.884);
+}
+
+.color-button {
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+    width: 25px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 12px;
+    color: rgb(34, 255, 0);
+}
+
+#not{
+    margin-left: 40px;
+}
+
+.color-input {
+    position: absolute;
+    opacity: 0;
+    border: none;
+}
