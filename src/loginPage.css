@@ -1,4 +1,3 @@
-
 body {
   padding-top: 5%;
   background-color: #1e272e;
@@ -14,12 +13,8 @@ body {
   margin-top: -2.5%;
 }
 
-/* input[type="text"] {
-  color: blueviolet;
-} */
-
 .login-form {
-  background-color: #34495e;
+  background-color: #34495e4b;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.662);
@@ -33,21 +28,28 @@ body {
 }
 
 .login-form input {
-  width: calc(100% - 30px);
+  box-sizing: border-box;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
   margin: 10px auto;
   padding: 15px;
   border: none;
   border-radius: 5px;
-  background-color: #263238;
-  color: #fff;
+  background-color: #b0c2d0;
+  color: #000000 !important;
+  letter-spacing: 1px;
+  font-weight: bold;
   font-size: 16px;
   transition: border-bottom 0.3s ease;
   border-bottom: 2px solid transparent;
 }
 
 .login-form input:focus {
-  outline: none;
-  border-bottom: 2px solid #4caf50;
+  outline: none !important;
+  border-bottom: 2px solid #4caf50 !important;
 }
 
 .login-form button {
@@ -64,4 +66,17 @@ body {
 
 .login-form button:hover {
   background-color: #45a049;
+}
+
+.reg {
+  color: #9afba2;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-decoration: none !important;
+  display: inline-block;
+}
+
+.reg:hover {
+  color: #c4f8c2;
+  text-decoration: none;
 }

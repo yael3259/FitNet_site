@@ -1,7 +1,7 @@
 import React from 'react';
 import './app.css';
 import { Routes, Route } from "react-router-dom";
-import RegistrationPage from './registrationPage';
+import RegistrationPage from './sign_in';
 import LoginForm from './loginPage';
 import { useState } from 'react';
 import List from './features/product/List';
@@ -37,7 +37,7 @@ function App() {
         <Route path='list' element={<List />} />
         <Route path='details/:id' element={<Ditails />} />
         <Route path='login' element={<LoginForm />} />
-        <Route path='registration' element={<RegistrationPage />} />
+        <Route path='sign_in' element={<RegistrationPage />} />
         <Route path='addProduct' element={<AddProductForm />} />
         <Route path='updateProduct' element={<UpdateProductForm />} />
         <Route path='deleteProduct' element={<DeleteProductForm />} />

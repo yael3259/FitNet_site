@@ -3,25 +3,83 @@ import ListItem from './ListItem';
 import { getAllProduct } from './productApi';
 import './List.css';
 import { MiniBasket } from "./MiniBasket";
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 const List = () => {
-    const [arr, setArr] = useState([]);
-    const [page, setPage] = useState(1);
-    const [pageCount, setPageCount] = useState(1);
-    const [hoveredProductId, setHoveredProductId] = useState(null);
-    const [hoveredImage, setHoveredImage] = useState(null);
-    const [showMiniBasket, setShowMiniBasket] = useState(false);
+    const [arr, setArr] = useState([]); // רשימת המוצרים
+    const [page, setPage] = useState(1); // דף הנוכחי בעמוד
+    const [searchText, setSearchText] = useState(''); // חיפוש
+    const [cartItems, setCartItems] = useState([]); // פריטים בסל
+    const [loading, setLoading] = useState(false); // האם טעינה מתבצעת
+    const [hoveredProductId, setHoveredProductId] = useState(null); // מוצר ממוסך
+    const [hoveredImage, setHoveredImage] = useState(null); // תמונה ממוסכת
+    const [showMiniBasket, setShowMiniBasket] = useState(false); // האם להציג את העגלה המינימלית
+    const [closeTimeout, setCloseTimeout] = useState(null); // זמן סגירת סל מוקטן
+
 
     useEffect(() => {
-        getAllProduct(page, 5, '')
+        loadProducts(page, searchText);
+        const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        setCartItems(storedCartItems);
+    }, [page, searchText]);
+
+    useEffect(() => {
+        if (cartItems.length > 0) {
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+    }, [cartItems]);
+
+
+    const loadProducts = (currentPage, searchText = '') => {
+        setLoading(true);
+        getAllProduct(currentPage, 9, searchText)
             .then((res) => {
-                console.log(res);
-                setArr(res.data);
+                if (currentPage === 1) {
+                    setArr(res.data);
+                } else {
+                    setArr(prevArr => [...prevArr, ...res.data]);
+                }
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    setLoading(false);
+                }, 2000);
             });
-    }, [page]);
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+        setPage(1);
+    };
+
+    const addToCart = (product) => {
+        setCartItems((prevItems) => {
+            const existingProduct = prevItems.find((item) => item._id === product._id);
+            if (existingProduct) {
+                return prevItems.map((item) =>
+                    item._id === product._id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+                );
+            } else {
+                return [...prevItems, { ...product, quantity: 1 }];
+            }
+        });
+
+        
+        setShowMiniBasket(true);
+        if (closeTimeout) {
+            clearTimeout(closeTimeout);
+        }
+        const newTimeout = setTimeout(() => {
+            setShowMiniBasket(false);
+        }, 12000);
+        setCloseTimeout(newTimeout);
+    };
 
     const handleMouseOver = (productId) => {
         setHoveredProductId(productId);
@@ -33,39 +91,38 @@ const List = () => {
         setHoveredImage(null);
     };
 
-    const handleButtonClick = () => {
-        setShowMiniBasket(true);
-        setTimeout(() => { setShowMiniBasket(false) }, 12000);
+    const loadMoreProducts = () => {
+        setPage(prevPage => prevPage + 1);
     };
 
     const copyToClipboard = (code) => {
         navigator.clipboard.writeText(code).then(() => {
             alert(`Coupon code ${code} copied to clipboard!`);
+        }).catch((err) => {
+            console.error('Error copying to clipboard: ', err);
         });
     };
 
     return (
         <>
-            {showMiniBasket && <MiniBasket />}
+            {showMiniBasket && <MiniBasket cartItems={cartItems} setCartItems={setCartItems} />}
             <div className="bg">
-                <p></p>
-                <br /><br /><br /><br /><br /><br /><br /><br />
-                <br /><br /><br /><br /><br /><br /><br /><br />
-                <h1 className="header"> online </h1>
-                <h1 className="header"> fitness </h1>
-                <h1 className="header"> store </h1>
-                <br /><br /><br /><br /><br /><br /><br /><br />
-                <br /><br /><br /><br /><br /><br /><br />
+                <h1 id='f' className="header"> Online </h1>
+                <h1 className="header"> Fitness </h1>
+                <h1 className="header"> Store </h1>
             </div>
 
             <div className="parallax"></div>
             <div className="overlay">
-                <p className='offer'>Special Offer Just For You!</p>
-                <p>
-                    <img src="https://cdn-icons-png.freepik.com/256/1685/1685230.png?uid=R84827178&ga=GA1.1.1617557968.1720184330" width={45} height={45} className='fire'/>
-                    Use the coupon codes below to get exclusive discounts
-                    <img src="https://cdn-icons-png.freepik.com/256/1685/1685230.png?uid=R84827178&ga=GA1.1.1617557968.1720184330" width={45} height={45} className='fire2'/>
-                </p>
+                <p className='offer'><img src='https://cdn-icons-png.freepik.com/256/12957/12957298.png?semt=ais_hybrid'
+                    height={45}
+                    width={45}
+                    style={{ position: 'relative', top: '6.5px', right: "10px" }} />
+                    Special Offer Just For You
+                    <img src='https://cdn-icons-png.freepik.com/256/12957/12957298.png?semt=ais_hybrid'
+                        height={45}
+                        width={45}
+                        style={{ position: 'relative', top: '6.5px', left: "10px" }} /></p>
                 <div className="coupon-container">
                     <div className="coupon">
                         <p className='lab'>Get 10% off your first purchase</p>
@@ -86,30 +143,51 @@ const List = () => {
             </div>
 
             <div className="container">
+                <div className="search-container">
+                    <div className="search-icon">
+                        <FontAwesomeIcon icon={faSearch} />
+                    </div>
+                    <input
+                        type="text"
+                        placeholder="Search product..."
+                        value={searchText}
+                        onChange={handleSearchChange}
+                        className="search-input"
+                    />
+                </div>
+
                 <div className="grid-container">
                     {arr.map((item) => (
                         <div className="grid-item" key={item._id}>
-                            <a href={'/details/' + item.name + ":" + item._id} target="_blank" className="grid-item-link">
+                            <Link to={'/details/' + item.name + ":" + item._id} state={item}>
                                 <ListItem one={item} />
-                            </a>
+                            </Link>
                             <div className="ditails">
                                 <p className="item-name">{item.name}</p>
                                 <div className="dd-container">
                                     <p className="price">$ {item.price}</p>
-                                    <img
-                                        src={hoveredProductId === item._id ? hoveredImage : 'https://cdn-icons-png.freepik.com/256/11707/11707954.png?ga=GA1.1.394280285.1712833522&'}
-                                        width={30}
-                                        height={30}
+                                    <button
+                                        onClick={() => addToCart(item)}
                                         className="dd"
                                         onMouseOver={() => handleMouseOver(item._id)}
                                         onMouseOut={handleMouseOut}
-                                        onClick={handleButtonClick}
-                                    />
+                                    >
+                                        <img
+                                            src={hoveredProductId === item._id ? hoveredImage : 'https://cdn-icons-png.freepik.com/256/11707/11707954.png?ga=GA1.1.394280285.1712833522&'}
+                                            width={30}
+                                            height={30}
+                                            alt="Add to cart icon"
+                                        />
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
+
+                <button onClick={loadMoreProducts} disabled={loading} className="load-more-button">
+                    {loading ? <div className="spinner"></div> : "Load More"}
+                </button>
             </div>
         </>
     );

@@ -34,6 +34,14 @@ export function UpdateProductForm() {
         }
     };
 
+    window.addEventListener('resize', () => {
+        const elements = document.querySelectorAll('.body1, .body2, .update-form, .label-container');
+        elements.forEach(el => {
+            el.style.border = 'none';
+            el.style.outline = 'none';
+        });
+    });
+
     return (
         <div>
             <div className="b2">

@@ -1,6 +1,7 @@
 import React from 'react';
 import './loginPage.css';
-
+import {RegistrationPage} from "./sign_in";
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -20,6 +21,7 @@ export const LoginForm = () => {
         <input type="text" name="username" placeholder="User name" />
         <input type="password" name="password" placeholder="Password" />
         <button type="submit">Login</button>
+        <NavLink to={"/sign_in"}><p className='reg'>Forgot password?</p></NavLink>
       </form>
     </div>
   );
