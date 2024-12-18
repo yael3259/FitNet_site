@@ -18,7 +18,7 @@ body {
 }
 
 .lab {
-    color: rgb(255, 112, 112);
+    color: rgb(194, 255, 250);
     font-size: 18px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
@@ -29,6 +29,8 @@ body {
 .parallax {
     height: 66vh;
     background-image: url("./files/B.jpeg");
+    filter: grayscale(100%);
+    margin-right: -17px;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -51,9 +53,9 @@ body {
 
 .offer {
     font-size: 45px;
-    color: rgb(226, 116, 72);
+    color: rgb(255, 0, 0);
     font-weight: bold;
-    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    -webkit-text-stroke: 0.4px rgb(0, 0, 0);
 }
 
 .coupon-container {
@@ -78,6 +80,7 @@ body {
 
 .coupon-code {
     font-weight: bold;
+    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
 }
 
 .coupon button {
@@ -92,23 +95,21 @@ body {
     background-color: #ccc;
 }
 
-.container {
+.container_list {
     display: flex;
     flex-direction: column;
-    align-items: end;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
     margin-bottom: 4%;
     padding-top: 5%;
 }
 
-.grid-container {
+.grid-container_list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 65px;
-    margin-left: -110%;
-    margin-right: 15%;
-    margin-bottom: 10%;
+    margin-bottom: 3.5%;
 }
 
 #f {
@@ -132,8 +133,8 @@ body {
 
 .search-icon {
     position: absolute;
-    right: 80px;
-    top: 25px;
+    right: 86px;
+    top: 22px;
     pointer-events: none;
     color: #329700;
 }
@@ -145,6 +146,9 @@ body {
     align-items: center;
     padding: 10px;
     z-index: 1000;
+    margin-bottom: 20px;
+    transform: translateX(201%);
+    /* transform: translateX(-18%); */
 }
 
 .search-input {
@@ -155,15 +159,13 @@ body {
     border-radius: 4px;
     font-size: 15px;
     letter-spacing: 1px;
-    margin-left: -29%;
+    margin-left: -22%;
 }
 
 .search-input:focus {
     outline: 1px solid #ff7913;
     box-shadow: none;
     color: #000;
-    font-size: 15px;
-    letter-spacing: 1px;
 }
 
 .grid-item {
@@ -173,23 +175,27 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     color: rgb(34, 34, 34);
-    height: 318px;
+    height: 311px;
     width: 300px;
     font-size: 20px;
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
 }
 
 .grid-item:hover {
     background-color: rgba(174, 253, 168, 0.076);
 }
 
-.ditails {
+.product_details {
     background-color: transparent;
-    border: 1px solid #45ff1c;
+    border: 1px solid #06d95b;
+    border-top: none;
     color: rgb(254, 255, 253);
     position: relative;
-    margin-top: 0;
+    margin-top: -5px !important;
+    border-radius: 0 0 6px 6px;
+    padding-bottom: 20px;
 }
 
 .item-name {
@@ -225,43 +231,42 @@ body {
     object-fit: cover;
     border: none;
     height: 220px;
-    width: 300px;
+    width: 297px;
+    border-radius: 6px 6px 0 0;
 }
 
 .item-container {
     position: relative;
 }
 
-.dd {
+.del_product {
     transition: background-color 0.3s ease, border-radius 0.3s ease;
     background-color: #00000052;
     border: solid 0.1px rgba(255, 255, 255, 0.339);
-    border-radius: 37%;
+    border-radius: 30%;
     padding: 5px;
     padding-bottom: 0;
+    margin-right: -18px;
 }
 
-.dd:hover {
+.del_product:hover {
     background-color: transparent;
     box-shadow: 0 0 4px rgba(162, 153, 153, 0.407);
-    border-radius: 37%;
+    border-radius: 30%;
     overflow: visible;
 }
 
 .load-more-button {
-    text-align: center;
-    margin: 0 auto;
-    margin-left: -41%;
-    border-radius: 6px;
-    display: block;
+    margin-top: 0px;
+    transform: translateX(8%);
     padding: 10px 20px;
     font-size: 16px;
     background-color: #a0ffaf;
     color: rgb(53, 53, 53);
     border: none;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-bottom: 10%;
 }
 
 .load-more-button:disabled {
@@ -291,19 +296,47 @@ body {
 }
 
 @media (max-width: 1200px) {
-    .grid-container {
+    .grid-container_list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 900px) {
-    .grid-container {
+    .grid-container_list {
         grid-template-columns: 1fr;
+    }
+    .load-more-button{
+        transform: translateX(-30%);
+        margin-top: -10px;
+    }
+    .search-container{
+        transform: translateX(10%);
     }
 }
 
 @media (max-width: 768px) {
     .bg{
-        margin-top: -27px;
+        margin-top: 106px;
+    }
+    .load-more-button{
+        transform: translateX(0%);
+        /* margin-top: -10px; */
+        margin-top: 3px;
+    }
+    .search-container{
+        transform: translateX(25%);
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container{
+        position: sticky;
+        top: 122px;
+    }
+}
+
+@media (max-width: 768px) {
+    .offer{
+        text-align: center;
     }
 }

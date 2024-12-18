@@ -52,8 +52,8 @@ export function AddProductForm() {
 
 
                     <div className="label-container">
-                        <label htmlFor="color" className="label transition-element">Color</label>
-                        <input type="color" id="color" className="transparent-input transition-element" {...register('color')} />
+                        <label htmlFor="color" id="color0" className="label transition-element">Color</label>
+                        <input type="color" id="color1" className="transparent-input transition-element" {...register('color')} />
                     </div>
                     <br></br><br></br>
 
@@ -67,9 +67,8 @@ export function AddProductForm() {
 
                     <div className="label-container">
                         <label htmlFor="image" className="label transition-element">Image URL</label>
-                        <input type="url" id="image" className="transparent-input transition-element" {...register('image')} />
+                        <input type="url" id="urlImage" className="transparent-input transition-element" {...register('urlImage')} />
                     </div>
-
                     <br></br><br></br>
 
 

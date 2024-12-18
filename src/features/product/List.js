@@ -35,7 +35,7 @@ const List = () => {
 
     const loadProducts = (currentPage, searchText = '') => {
         setLoading(true);
-        getAllProduct(currentPage, 9, searchText)
+        getAllProduct(currentPage, 12, searchText)
             .then((res) => {
                 if (currentPage === 1) {
                     setArr(res.data);
@@ -125,7 +125,7 @@ const List = () => {
                         style={{ position: 'relative', top: '6.5px', left: "10px" }} /></p>
                 <div className="coupon-container">
                     <div className="coupon">
-                        <p className='lab'>Get 10% off your first purchase</p>
+                        <p className='lab'>Get 10% off for the holiday</p>
                         <p className="coupon-code">FIMJS16</p>
                         <button onClick={() => copyToClipboard('FIMJS16')}>Copy Code</button>
                     </div>
@@ -142,7 +142,7 @@ const List = () => {
                 </div>
             </div>
 
-            <div className="container">
+            <div className="container_list">
                 <div className="search-container">
                     <div className="search-icon">
                         <FontAwesomeIcon icon={faSearch} />
@@ -156,19 +156,19 @@ const List = () => {
                     />
                 </div>
 
-                <div className="grid-container">
+                <div className="grid-container_list">
                     {arr.map((item) => (
                         <div className="grid-item" key={item._id}>
                             <Link to={'/details/' + item.name + ":" + item._id} state={item}>
                                 <ListItem one={item} />
                             </Link>
-                            <div className="ditails">
+                            <div className="product_details">
                                 <p className="item-name">{item.name}</p>
                                 <div className="dd-container">
                                     <p className="price">$ {item.price}</p>
                                     <button
                                         onClick={() => addToCart(item)}
-                                        className="dd"
+                                        className="del_product"
                                         onMouseOver={() => handleMouseOver(item._id)}
                                         onMouseOut={handleMouseOut}
                                     >

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: #1c252b;
-    color: #22fa2a;
+    color: #ffffff !important;
     text-align: center;
     font-size: 25px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -12,47 +12,19 @@
     padding-bottom: 6%;
 }
 
-.body2{
+.search_input{
+    border: 2px solid #faa722 !important;
     background-color: transparent;
-}
-
-.update-form{
-    background-color: transparent;
-}
-
-/* .custom-input-style {
-    background-color: transparent;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    padding: 8px 12px;
-    width: 100px;
-    outline: none;
-} */
-
-#nnn {
-    background-color: transparent;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    padding: 8px 12px;
-    width: 223.5px;
-    outline: none;
-}
-
-/* .custom-input-style:focus {
-    border: 2px dashed #4caf50;
-} */
-
-#nnn:focus {
-    border: 2px solid #4caf50;
+    width: 350px !important;
+    color: aliceblue !important;
+    font-size: 25px !important;
+    padding: 6px !important;
+    border-radius: 8px;
 }
 
 .title {
     text-align: center;
-    font-size: 35px;
+    font-size: 30px !important;
 }
 
 .p1 {
@@ -64,40 +36,31 @@
     font-size: 35px;
 }
 
-.b2 {
+.body_update {
     padding-top: 3%;
     padding-bottom: 1%;
-    background-color: transparent;
+    /* background-color: transparent; */
 }
 
-.transparent-submit {
-    background-color: #b8f7ba3f;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    margin-left: 1px;
-    width: 100px;
-    outline: none;
+.search-form{
+    background-color: #1c252b;
 }
 
-.transparent-submit:focus {
-    border: 2px solid #4caf50;
-}
-
-.transparent-reset {
-    background-color: #a7a7a779;
-    border: 2px solid #ccc;
+.reset_button {
+    background-color: #393939 !important;
+    border: 2px solid #7d7d7d !important;
     border-radius: 7px;
     color: rgb(255, 255, 255);
     font-size: 18px;
     width: 100px;
     padding: 8px 12px;
     outline: none;
+    align-self: center;
 }
 
-.transparent-reset:focus {
-    border: 2px solid #4caf50;
+.reset_button:hover {
+    border: 2px solid #b8b8b8 !important;
+    cursor: pointer;
 }
 
 .transparent-input {
@@ -119,18 +82,18 @@
     border: 2px solid #4caf50;
 }
 
-.transparent-submit {
+.search_button {
     background-color: transparent;
     border: 2px solid #4caf50;
-    border-radius: 10px;
+    border-radius: 8px !important;
     color: rgb(255, 255, 255);
-    font-size: 30px;
-    padding: 8px 12px;
-    width: 200px;
+    font-size: 25px !important;
+    padding: 6px !important;
+    width: 130px !important;
     outline: none;
 }
 
-.transparent-submit:focus {
+.search_button:focus {
     border: 2px solid #85d787;
 }
 
@@ -196,11 +159,6 @@ span {
     height: 100px;
 }
 
-.transparent-submit {
-    align-self: center;
-    margin-right: 20px;
-}
-
 .label-container {
     position: relative;
 }
@@ -218,19 +176,39 @@ span {
 }
 
 .label-container:hover::before {
-    background-color: rgba(0, 255, 0, 0.2);
+    background-color: transparent !important;
 }
 
 .transition-element {
     transition: background-color 0.3s ease;
 }
 
+#image {
+    width: 310px;
+}
+
 .label-container:hover .label,
 .label-container:hover .transparent-input,
 .label-container:hover .transparent-area {
-    background-color: rgba(253, 81, 46, 0.129);
+    /* background-color: rgba(253, 81, 46, 0.129); */
+    background-color: rgba(0, 255, 0, 0.2);
 }
 
 .label-container:hover .label {
     color: rgb(247, 212, 190);
+}
+
+@media (max-width: 768px) {
+    .body_update{
+        margin-top: 89px;
+    }
+    .search_input{
+        width: 230px !important;
+    }
+    .search_button{
+        width: 150px !important;
+    }
+    .reset_button{
+        margin-bottom: 165px;
+    }
 }

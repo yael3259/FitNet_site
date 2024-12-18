@@ -14,6 +14,8 @@ import { NavBar } from './NavBar';
 import { MyColorContext } from "./contexts";
 import { Contact } from './contactPage';
 import { CartShopping } from './features/product/Cart';
+import { Update } from './Update';
+import {UpdateOrder} from './features/order/Update_Order';
 
 
 
@@ -34,12 +36,15 @@ function App() {
       </MyColorContext.Provider>
 
       <Routes>
+        <Route path='' element={<List />} />
         <Route path='list' element={<List />} />
         <Route path='details/:id' element={<Ditails />} />
         <Route path='login' element={<LoginForm />} />
         <Route path='sign_in' element={<RegistrationPage />} />
         <Route path='addProduct' element={<AddProductForm />} />
-        <Route path='updateProduct' element={<UpdateProductForm />} />
+        <Route path='update' element={<Update />} />
+        <Route path='update_product' element={<UpdateProductForm />} />
+        <Route path='update_order' element={<UpdateOrder />} />
         <Route path='deleteProduct' element={<DeleteProductForm />} />
         <Route path='contact' element={<Contact />} />
         <Route path='cart' element={<CartShopping />} />

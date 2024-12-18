@@ -49,11 +49,11 @@
 }
 
 #name:focus {
-    border: 2px solid #4caf50;
+    border: 2px solid #ffffff;
 }
 
 .transparent-input1:focus {
-    border: 2px solid #4caf50;
+    border: 2px solid #ffffff;
 }
 
 .transparent-submit {
@@ -94,7 +94,7 @@
 }
 
 .transparent-area:focus {
-    border: 2px solid #4caf50;
+    border: 2px solid #ffffff;
 }
 
 .p {
@@ -110,12 +110,21 @@ span {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#color {
+#color0 {
+    margin-top: 40px !important;
+}
+
+#color1 {
     border-radius: 30%;
     padding: 2px;
     width: 35px;
     height: 35px;
     cursor: pointer;
+}
+
+#price{
+    width: 70px;
+    height: 50px;
 }
 
 .label-container {
@@ -126,6 +135,10 @@ span {
     align-items: center;
     font-size: 25px;
 }
+
+/* .label-container:hover{
+    background-color: #39af3d4b;
+} */
 
 .transparent-input {
     align-self: flex-end;
@@ -150,11 +163,11 @@ span {
     justify-content: center;
 }
 
-#name {
+/* #name {
     position: relative;
-}
+} */
 
-#name::before {
+/* #name::before {
     content: "";
     position: absolute;
     top: 0;
@@ -164,11 +177,11 @@ span {
     background-color: rgba(0, 255, 0, 0);
     transition: background-color 0.3s ease;
     z-index: -1;
-}
+} */
 
-#name:hover {
+/* #name:hover {
     background-color: rgba(0, 255, 0, 0.08);
-}
+} */
 
 .label-container {
     position: relative;
@@ -194,12 +207,86 @@ span {
     transition: background-color 0.3s ease;
 }
 
-.label-container:hover .label,
+.label-container:hover .label {
+    background-color: rgba(46, 253, 46, 0.129) !important;
+    border-radius: 5px;
+}
+
 .label-container:hover .transparent-input,
 .label-container:hover .transparent-area {
-    background-color: rgba(46, 253, 46, 0.129);
+    background-color: rgba(46, 253, 46, 0.129) !important;
 }
 
 .label-container:hover .label {
-    color: rgb(197, 247, 190);
+    color: rgb(255, 255, 255) !important;
+}
+
+.transparent-input:focus{
+    border: 2px solid #ffffff !important;
+}
+
+#description:focus{
+    border: 2px solid #ffffff !important;
+}
+
+
+@media (max-width: 768px) {
+    .body1 {
+        padding: 20px;
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 100px 20px 20px 0 !important;
+        margin-left: -30% !important;
+    }
+
+    .bb {
+        background-color: #0291f7be;
+    }
+
+    .transparent-input,
+    .transparent-area,
+    .transparent-submit {
+        width: 90% !important;
+        margin: 10px 50% !important;
+        align-self: center !important;
+    }
+
+    .label-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 18px;
+        width: 100%;
+    }
+
+    #color0 {
+        margin-top: 40px !important;
+    }
+
+    #color1 {
+        padding: 2px;
+        width: 35px !important;
+        height: 35px;
+    }
+
+    #price{
+        width: 70px !important;
+    }
+
+    .p {
+        font-size: 28px;
+        text-align: right;
+        margin-right: -33px;
+    }
+
+    .transparent-submit {
+        width: 50% !important;
+        font-size: 25px;
+        margin-right: -20px;
+        align-items: center !important;
+    }
 }

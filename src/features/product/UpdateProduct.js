@@ -5,7 +5,6 @@ import './UpdateProduct.css';
 
 
 
-
 export function UpdateProductForm() {
     const [product, setProduct] = useState(null);
     const { register, handleSubmit } = useForm();
@@ -44,18 +43,18 @@ export function UpdateProductForm() {
 
     return (
         <div>
-            <div className="b2">
+            <div className="body_update">
                 <form onSubmit={handleSubmit(onSubmit)} className="search-form">
                     <div className="body1">
                         <div className="bb">
                             <br></br>
 
-                            <label className="title">Enter a specific product code to edit</label>
+                            <label className="title">UPDUTE PRODUCT</label>
                             <br></br><br></br><br></br>
-                            <input type="text" id="nnn" className="custom-input-style" {...register('productId', { required: true })} />
-                            <button type="submit" className="transparent-submit">Search</button>
+                            <input type="text" className="search_input" placeholder="Enter product code" {...register('productId', { required: true })} />
+                            <button type="submit" className="search_button">Search</button>
                             <br></br>
-                            <button type="reset" className="transparent-reset">Reset</button>
+                            <button type="reset" className="reset_button">Reset</button>
                         </div>
                     </div>
                 </form>

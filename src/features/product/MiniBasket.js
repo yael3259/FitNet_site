@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./MiniBasket.css";
-import { CartShopping } from "./Cart";
 
 
 
@@ -38,10 +37,8 @@ export const MiniBasket = ({ cartItems, setCartItems, quantity }) => {
                 <button className="cart-button">Go to shopping cart</button>
             </NavLink>
 
-            <div className="top">
-                <div className="total-price">
-                    <p>Total: ${totalPrice.toFixed(2)}</p>
-                </div>
+            <div className="top1">
+                <p className="total-price">Total <span id="t">${totalPrice.toFixed(2)}</span></p>
             </div>
             <div id="mini-basket-container" className="item-container">
                 {cartItems.map((item, index) => (

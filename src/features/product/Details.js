@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { MiniBasket } from './MiniBasket';
 import './Details.css';
 import { useLocation } from 'react-router-dom';
 
-
-
 export const Ditails = () => {
     const location = useLocation();
     const [quantity, setQuantity] = useState(1);
+    const [selectedColor, setSelectedColor] = useState(''); // מצב חדש לשמירת הצבע שנבחר
     const [closeTimeout, setCloseTimeout] = useState(null);
     const [showMiniBasket, setShowMiniBasket] = useState(false);
     const [cartItems, setCartItems] = useState(() => {
@@ -33,16 +32,22 @@ export const Ditails = () => {
     };
 
     const addToCart = () => {
+        if (!selectedColor) {
+            alert('Please select a color');
+            return;
+        }
+
         const product = {
             ...location.state,
             quantity,
+            color: selectedColor, // העברת הצבע שנבחר
         };
 
         setCartItems(prevItems => {
-            const existingProduct = prevItems.find(item => item._id === product._id);
+            const existingProduct = prevItems.find(item => item._id === product._id && item.color === product.color);
             if (existingProduct) {
                 return prevItems.map(item =>
-                    item._id === product._id
+                    item._id === product._id && item.color === product.color
                         ? { ...item, quantity: item.quantity + quantity }
                         : item
                 );
@@ -64,11 +69,11 @@ export const Ditails = () => {
     };
 
     return (
-        <>
+        <div>
             {showMiniBasket && <MiniBasket cartItems={cartItems} setCartItems={setCartItems} />}
-            <div className="details">
-                <img src={location.state.urlImage} className='img1' width={450} height={450} alt="Product" />
-                <div className="text">
+            <div className="details_page">
+                <img src={location.state.urlImage} className='img_detail' width={450} height={450} alt="Product" />
+                <div className="text_details">
                     <p className="d">{location.state.name}</p>
                     <p className="d1"><span className='d2'>$</span>{location.state.price}</p>
                     <br />
@@ -84,22 +89,22 @@ export const Ditails = () => {
                     <div className="color">
                         <p className="c">Color</p>
                         <div className="color-options">
-                            <button className='black' onClick={() => console.log('Black selected')}>Black</button>
-                            <button className='white' onClick={() => console.log('White selected')}>White</button>
-                            <button className='red' onClick={() => console.log('Red selected')}>Red</button>
+                            <button className='black' onClick={() => setSelectedColor('Black')}>Black</button>
+                            <button className='white' onClick={() => setSelectedColor('White')}>White</button>
+                            <button className='red' onClick={() => setSelectedColor('Red')}>Red</button>
                         </div>
                     </div>
 
                     <div className='cnt'>
                         <p className='c'>Quantity</p>
                         <div className="quantity-control">
-                            <button className={`qty-control-m ${quantity === 1 ? 'qty-control-min' : ''}`} onClick={handleDecrement}>-</button>
+                            <button className={quantity === 1 ? 'qty-control-min' : "qty-control_minus"} onClick={handleDecrement}>-</button>
                             <p className="qty">{quantity}</p>
                             <button className="qty-control" onClick={handleIncrement}>+</button>
                         </div>
                     </div>
 
-                    <button className="cart" onClick={addToCart}>ADD TO CART</button>
+                    <button className="cart_b" onClick={addToCart}>ADD TO CART</button>
                 </div>
             </div>
 
@@ -107,6 +112,6 @@ export const Ditails = () => {
                 <p className='des'>Product description <br /><br /></p>
                 {location.state.description}
             </div>
-        </>
+        </div>
     );
 };

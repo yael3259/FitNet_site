@@ -71,3 +71,9 @@ body {
 .registration-form button:hover {
     background-color: #45a049;
 }
+
+@media (max-width: 768px) {
+    .registration-form{
+        margin-top: 200px;
+    }
+}

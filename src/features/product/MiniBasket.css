@@ -1,5 +1,5 @@
 .basket {
-    width: 15.5%;
+    width: 15%;
     height: 78vh;
     position: fixed;
     top: 110px;
@@ -33,13 +33,21 @@
 
 .total-price {
     font-size: 18px;
-    font-weight: bold;
-    margin-top: -15px;
+    font-weight: lighter;
+    margin-top: -2px;
     text-align: center;
     color: #3f3e3e;
+    color: #4c4c4c;
+    font-size: 20px;
+    letter-spacing: 0.6px;
 }
 
-.top {
+#t {
+    color: #ce5001;
+    font-weight: 500;
+}
+
+.top1 {
     background-color: #ffffff4e;
 }
 
@@ -123,7 +131,7 @@
     gap: 10px;
 }
 
-.det_del{
+.det_del {
     display: flex;
     align-items: start;
     gap: 31.5px;
@@ -141,4 +149,26 @@
     color: #2b0202;
     font-weight: bold;
     font-size: 11px;
+}
+
+@media (max-width: 1000px) {
+    .basket {
+        width: 25%;
+    }
+}
+
+@media (max-width: 768px) {
+    .basket {
+        margin-top: 70px;
+        width: 80%;
+        height: 50vh;
+        margin-left: 10%;
+        translateX: (-50%);
+        background-color: rgb(255, 227, 199);
+    }
+
+    .item-container {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
 }

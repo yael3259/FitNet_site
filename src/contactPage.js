@@ -10,6 +10,9 @@ export const Contact = () => {
   const [isFullnameFocused, setIsFullnameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isMessageFocused, setIsMessageFocused] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
 
   const handleFocus = (setter) => () => {
     setter(true);
@@ -21,18 +24,44 @@ export const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!fullname || !email || !message) {
+      setErrorMessage("Please fill out all fields.");
+      setSuccessMessage('');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setSuccessMessage('');
+      return;
+    }
+
+    setErrorMessage('');
+    setSuccessMessage('');
+
+    setSuccessMessage('Your message has been successfully sent!');
+    setFullname('');
+    setEmail('');
+    setMessage('');
+  };
+
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return regex.test(email);
   };
 
   return (
-    <div className="b">
-      <div className="container">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="fullname" className="tt">Full Name</label>
+    <div className="contact_page">
+      <div className="container_con">
+        <div className="cf" onSubmit={handleSubmit}>
+          <p className="title_con">Send us a massage</p>
+          <label htmlFor="fullname" className="con_details1"></label>
           <input
             type="text"
             id="fullname"
             name="fullname"
-            placeholder="Your full name.."
+            placeholder="Full Name"
             value={fullname}
             onChange={(e) => setFullname(e.target.value)}
             onFocus={handleFocus(setIsFullnameFocused)}
@@ -40,12 +69,12 @@ export const Contact = () => {
             className={isFullnameFocused ? "focused" : ""}
           />
 
-          <label htmlFor="email" className="tt">Email</label>
+          <label htmlFor="email" className="con_details1"></label>
           <input
-            type="text"
+            type="email"
             id="email"
             name="email"
-            placeholder="Your email.."
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onFocus={handleFocus(setIsEmailFocused)}
@@ -53,12 +82,11 @@ export const Contact = () => {
             className={isEmailFocused ? "focused" : ""}
           />
 
-          <label htmlFor="message" className="tt">Message</label>
+          <label htmlFor="message" className="con_details1"></label>
           <textarea
             id="message"
             name="message"
-            placeholder="Write something.."
-            style={{ height: '200px' }}
+            placeholder="Message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onFocus={handleFocus(setIsMessageFocused)}
@@ -66,16 +94,28 @@ export const Contact = () => {
             className={isMessageFocused ? "focused" : ""}
           ></textarea>
 
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-      <p className="p1">CONTACT US</p>
+          {/* <div className="con_container">
+            <input type="submit" value="submit" />
+          </div> */}
+          <div className="con_container">
+            <button type="submit" className="submit-button">
+              <i className="fas fa-paper-plane"></i>
+            </button>
+          </div>
 
-      <div className="details">
-        <h1 className="header1">Call us <br></br> <span className="s">(+972) 52-760-7424</span></h1>
-        <h1 className="header1">Our location <br></br> <span className="s" >Israel, El'ad Yehuda HaNasi</span></h1>
-        <h1 className="header1">Email <br></br> <span className="s">yael3259@gmail.com</span></h1>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {successMessage && <p className="success-message">{successMessage}</p>}
+        </div>
       </div>
+
+
+      <div class="con_details">
+        <p className="con_tytle">CONTACT US</p>
+        <h1><i class="fas fa-phone icon"></i>Call us <span class="s">(+972) 52-760-7424</span></h1>
+        <h1><i class="fas fa-map-marker-alt icon"></i>Our location <span class="s">Yehuda HaNasi, El'ad, Israel</span></h1>
+        <h1><i class="fas fa-envelope icon"></i>Email <span class="s">yael3259@gmail.com</span></h1>
+      </div>
+
     </div>
   );
 };
