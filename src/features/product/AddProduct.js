@@ -4,7 +4,6 @@ import './AddProduct.css';
 
 
 
-
 export function AddProductForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -26,7 +25,7 @@ export function AddProductForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="body1">
                 <div className="bb">
-                    <p className="p">Add product</p><br></br>
+                    <p className="p">ADD PRODUCT</p><br></br>
 
                     <div className="label-container">
                         <label htmlFor="name" className="label transition-element">Name</label>
@@ -72,7 +71,7 @@ export function AddProductForm() {
                     <br></br><br></br>
 
 
-                    <button type="submit" className="transparent-submit transition-element">Submit</button>
+                    <button type="submit" className="submit_addPage">Submit</button>
                 </div>
             </div>
         </form >

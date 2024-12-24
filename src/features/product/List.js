@@ -5,7 +5,8 @@ import './List.css';
 import { MiniBasket } from "./MiniBasket";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const List = () => {
@@ -18,7 +19,7 @@ const List = () => {
     const [hoveredImage, setHoveredImage] = useState(null); // תמונה ממוסכת
     const [showMiniBasket, setShowMiniBasket] = useState(false); // האם להציג את העגלה המינימלית
     const [closeTimeout, setCloseTimeout] = useState(null); // זמן סגירת סל מוקטן
-
+    const [copiedCode, setCopiedCode] = useState(null); // Track copied code
 
     useEffect(() => {
         loadProducts(page, searchText);
@@ -31,7 +32,6 @@ const List = () => {
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
         }
     }, [cartItems]);
-
 
     const loadProducts = (currentPage, searchText = '') => {
         setLoading(true);
@@ -70,7 +70,6 @@ const List = () => {
             }
         });
 
-        
         setShowMiniBasket(true);
         if (closeTimeout) {
             clearTimeout(closeTimeout);
@@ -97,7 +96,7 @@ const List = () => {
 
     const copyToClipboard = (code) => {
         navigator.clipboard.writeText(code).then(() => {
-            alert(`Coupon code ${code} copied to clipboard!`);
+            setCopiedCode(code);
         }).catch((err) => {
             console.error('Error copying to clipboard: ', err);
         });
@@ -127,17 +126,29 @@ const List = () => {
                     <div className="coupon">
                         <p className='lab'>Get 10% off for the holiday</p>
                         <p className="coupon-code">FIMJS16</p>
-                        <button onClick={() => copyToClipboard('FIMJS16')}>Copy Code</button>
+                        <button onClick={() => copyToClipboard('FIMJS16')}>
+                            {copiedCode === 'FIMJS16' ? (<>
+                                copied <FontAwesomeIcon icon={faCheck} className='copyIcon' />
+                            </>) : ('Copy Code')}
+                        </button>
                     </div>
                     <div className="coupon">
                         <p className='lab'>Get 15% off an $80 purchase</p>
                         <p className="coupon-code">HEFGI20</p>
-                        <button onClick={() => copyToClipboard('HEFGI20')}>Copy Code</button>
+                        <button onClick={() => copyToClipboard('HEFGI20')}>
+                            {copiedCode === 'HEFGI20' ? (<>
+                                copied <FontAwesomeIcon icon={faCheck} className='copyIcon' />
+                            </>) : ('Copy Code')}
+                        </button>
                     </div>
                     <div className="coupon">
                         <p className='lab'>Get 2% off storewide</p>
                         <p className="coupon-code">STWD20</p>
-                        <button onClick={() => copyToClipboard('STWD20')}>Copy Code</button>
+                        <button onClick={() => copyToClipboard('STWD20')}>
+                            {copiedCode === 'STWD20' ? (<>
+                                copied <FontAwesomeIcon icon={faCheck} className='copyIcon' />
+                            </>) : ('Copy Code')}
+                        </button>
                     </div>
                 </div>
             </div>

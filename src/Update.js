@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Update.css';
-import { UpdateProductForm } from './features/product/UpdateProduct';
+
+
 
 export const Update = () => {
     return (

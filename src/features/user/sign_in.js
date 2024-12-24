@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { addUser } from './userApi';
 import './sign_in.css';
 
 
 
-const RegistrationPage = () => {
-    const [username, setUsername] = useState('');
+export const RegistrationPage = () => {
+    const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const navigate = useNavigate();
+
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -20,11 +24,26 @@ const RegistrationPage = () => {
         setEmail(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Submitted:', { username, password, email });
-        // Add logic to handle registration data
+        if (!userName || !password || !email) {
+            alert("Please fill all the fields");
+            return;
+        }
+        const data = { email, password, userName };
+        console.log(data);
+
+        try {
+            let res = await addUser(data);
+            alert("You signed up successfully!");
+            console.log(res);
+            navigate("/login");
+        } catch (err) {
+            alert(err.response?.data?.message || "An error occurred. Please try again.");
+        }
     };
+
 
     return (
         <div className="registration-container">
@@ -32,9 +51,9 @@ const RegistrationPage = () => {
                 <h2>Sign up</h2>
                 <input
                     type="text"
-                    name="username"
+                    name="userName"
                     placeholder="User name"
-                    value={username}
+                    value={userName}
                     onChange={handleUsernameChange}
                 />
                 <input
@@ -52,9 +71,11 @@ const RegistrationPage = () => {
                     onChange={handleEmailChange}
                 />
                 <button type="submit">Register</button>
+                <NavLink to={"/login"} className="back_to_login">
+                    <i className="fas fa-arrow-left" style={{ marginRight: '8px' }}></i>
+                    Back to login
+                </NavLink>
             </form>
         </div>
     );
 };
-
-export default RegistrationPage;

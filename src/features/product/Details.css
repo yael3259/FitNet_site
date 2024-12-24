@@ -247,6 +247,7 @@
 .description {
     scrollbar-width: thin;
     scrollbar-color: #ff8800c1 rgba(255, 255, 255, 0.1);
+    border-radius: 0 12px 12px 0;
 }
 
 .des {

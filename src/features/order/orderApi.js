@@ -14,6 +14,18 @@ export const getOrderById = (id) => {
     return axios.get(`${baseUrl}/${id}`);
 }
 
-export const Update_Order = (product) => {
-    return axios.put(`${baseUrl}/${product.id}`, product);
+// export const updateOrder = (order) => {
+//     console.log(order._id);
+//     return axios.put(`${baseUrl}/${order.id}`, order);
+// }
+export const updateOrder = (order) => {
+    return axios.put(`${baseUrl}/${order.id}`, order);
+};
+
+export const deleteOrder = (id) => {
+    return axios.delete(`${baseUrl}/${id}`);
+}
+
+export const AddOrder = (order) => {
+    return axios.post(baseUrl, order);
 }

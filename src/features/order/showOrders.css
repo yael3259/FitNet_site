@@ -1,0 +1,132 @@
+.orders-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+h2 {
+    text-align: center;
+    color: #ffd0a6;
+    font-size: 24px;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+h4{
+    color: rgb(255, 209, 135);
+}
+
+#sp{
+    color: rgb(255, 186, 75);
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 30px;
+}
+
+.order-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 8px;
+    height: auto;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.orderD {
+    padding: 15px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.products_list {
+    background-color: #252525;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product-item {
+    background-color: #2a2a2a; /* רקע כהה לכל מוצר */
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.product-item span {
+    font-weight: bold;
+}
+
+.pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.pagination button {
+    padding: 12px 25px;
+    background-color: #ffb25a;
+    color: rgb(45, 45, 45);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: #e89a41;
+}
+
+.order-card button {
+    padding: 12px 25px;
+    background-color: #9b7d1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.order-card button:hover {
+    background-color: #b99521;
+}
+
+.order-card button:focus {
+    outline: none;
+}
+
+
+@media (max-width: 768px) {
+    .orders-container {
+        margin-top: 104px;
+    }
+}

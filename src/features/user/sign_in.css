@@ -72,8 +72,22 @@ body {
     background-color: #45a049;
 }
 
+.back_to_login {
+    color: #9afba2;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-decoration: none !important;
+    display: inline-block;
+    margin-top: 15px;
+  }
+  
+  .back_to_login:hover {
+    color: #c4f8c2;
+    text-decoration: none;
+  }
+
 @media (max-width: 768px) {
     .registration-form{
-        margin-top: 200px;
+        margin-top: 150px;
     }
 }

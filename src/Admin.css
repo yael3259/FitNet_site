@@ -1,0 +1,39 @@
+.adminContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 17px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.ad_p {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.AD_button {
+    padding: 30px 15px 30px 15px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(255, 185, 88);
+    font-size: 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    width: 180px;
+    margin-top: 50px;
+    cursor: pointer;
+    color: rgb(72, 72, 72);
+    border: none;
+}
+
+.AD_button:hover {
+    background-color: rgb(209, 153, 73);
+}
+
+@media (max-width: 768px) {
+    .adminForm{
+        margin-top: 220px;
+    }
+}

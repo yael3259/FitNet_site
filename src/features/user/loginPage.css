@@ -31,7 +31,7 @@ body {
   box-sizing: border-box;
 }
 
-.login-form input[type="text"],
+.login-form input[type="email"],
 .login-form input[type="password"] {
   width: 100%;
   margin: 10px auto;
@@ -81,8 +81,12 @@ body {
   text-decoration: none;
 }
 
+#reg1{
+  margin-left: 23.8px;
+}
+
 @media (max-width: 768px) {
   .login-container{
-      margin-top: 58px;
+      margin-top: 30px;
   }
 }

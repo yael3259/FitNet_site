@@ -47,14 +47,16 @@
 }
 
 .reset_button {
-    background-color: #393939 !important;
-    border: 2px solid #7d7d7d !important;
+    background-color: #243038af !important;
+    border: 2px solid #35454f !important;
     border-radius: 7px;
     color: rgb(255, 255, 255);
     font-size: 18px;
     width: 100px;
     padding: 8px 12px;
     outline: none;
+    letter-spacing: 1px;
+    cursor: pointer;
     align-self: center;
 }
 
@@ -85,12 +87,20 @@
 .search_button {
     background-color: transparent;
     border: 2px solid #4caf50;
-    border-radius: 8px !important;
+    border-radius: 6px !important;
     color: rgb(255, 255, 255);
     font-size: 25px !important;
+    align-self: center;
+    margin-left: 4px;
     padding: 6px !important;
     width: 130px !important;
     outline: none;
+}
+
+.search_button:hover{
+    background-color: #4caf50;
+    color: #12171b;
+    cursor: pointer;
 }
 
 .search_button:focus {
