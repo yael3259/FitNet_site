@@ -17,3 +17,9 @@ export const login = (user) => {
 export const addUser = (userData) => {
     return axios.post(baseUrl1, userData);
 };
+
+export const deleteUser = (id) => {
+    console.log("Deleting user with ID:", id);
+    return axios.delete(`${baseUrl1}/${id}`);
+};
+

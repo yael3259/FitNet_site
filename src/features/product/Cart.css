@@ -208,6 +208,11 @@
     margin: 6px 10px -10px 0 !important;
 }
 
+.small_fileds{
+    display: flex;
+    gap: 6px;
+}
+
 .remove-modal {
     position: fixed;
     top: 0;

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { addUser } from './userApi';
+import { NavBar } from '../../NavBar';
 import './sign_in.css';
 
 
@@ -9,6 +10,7 @@ export const RegistrationPage = () => {
     const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [userRole, setUserRole] = useState('');
     const navigate = useNavigate();
 
 
@@ -24,7 +26,6 @@ export const RegistrationPage = () => {
         setEmail(event.target.value);
     };
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!userName || !password || !email) {
@@ -32,21 +33,26 @@ export const RegistrationPage = () => {
             return;
         }
         const data = { email, password, userName };
-        console.log(data);
+        console.log("Submitted data:", data);
 
         try {
-            let res = await addUser(data);
+            const res = await addUser(data);
             alert("You signed up successfully!");
-            console.log(res);
+            console.log("Response from server:", res);
+
+            // let userRole = res.data.role;
+            // console.log("role: " + userRole);
+            setUserRole(res.data.role);
+
             navigate("/login");
         } catch (err) {
             alert(err.response?.data?.message || "An error occurred. Please try again.");
         }
     };
 
-
     return (
         <div className="registration-container">
+            {/* <NavBar userRole={userRole} /> */}
             <form className="registration-form" onSubmit={handleSubmit}>
                 <h2>Sign up</h2>
                 <input

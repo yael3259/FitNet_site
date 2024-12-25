@@ -4,40 +4,40 @@ import { FaEdit, FaShippingFast } from 'react-icons/fa';
 import "./showOrders.css";
 import { Link } from "react-router-dom";
 
-export const ShowAllOrders = () => {
-    const [orders, setOrders] = useState([]); // שמירת רשימת ההזמנות
-    const [error, setError] = useState(null); // הודעת שגיאה אם יש
-    const [page, setPage] = useState(1); // עמוד נוכחי
 
-    // פונקציה שמביאה את כל ההזמנות
+
+export const ShowAllOrders = () => {
+    const [orders, setOrders] = useState([]);
+    const [error, setError] = useState(null);
+    const [page, setPage] = useState(1);
+
     const fetchAllOrders = async () => {
         try {
-            const response = await getAllorders(page, 30, ""); // קריאה ל-API
-            setOrders(response.data); // עדכון state עם ההזמנות שהתקבלו
+            const response = await getAllorders(page, 30, "");
+            setOrders(response.data);
             console.log(response.data);
         } catch (err) {
-            setError("Failed to fetch orders"); // טיפול בשגיאה
+            setError("Failed to fetch orders");
         }
     };
 
-    // קריאה ל-API בזמן טעינת הקומפוננטה
     useEffect(() => {
         fetchAllOrders();
     }, [page]);
 
-    // פונקציה לפורמט תאריך בלבד
     const formatDate = (isoDate) => {
         const date = new Date(isoDate);
-        return date.toLocaleDateString("en-GB"); // פורמט DD/MM/YYYY
+        return date.toLocaleDateString("en-GB");
     };
 
     return (
         <div className="orders-container">
             <h2>All Orders</h2>
-            {error && <p className="error-message">{error}</p>} {/* הצגת הודעת שגיאה */}
+            {error && <p className="error-message">{error}</p>}
             <div className="orders-grid">
                 {orders.map((order, index) => (
                     <div key={index} className="order-card">
+                        <button className="deleteOrder_button">delete order</button>
                         <h3>Order ID: {order._id}</h3>
                         <div className="orderD">
                             <p><strong>User ID:</strong> {order.userId}</p>

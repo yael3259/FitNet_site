@@ -52,6 +52,11 @@ h4{
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
+.deleteOrder_button{
+    background-color: #121212 !important;
+    color: #fff;
+}
+
 .orderD {
     padding: 15px;
     background-color: #333;
@@ -66,7 +71,7 @@ h4{
 }
 
 .product-item {
-    background-color: #2a2a2a; /* רקע כהה לכל מוצר */
+    background-color: #2a2a2a;
     padding: 8px;
     border-radius: 5px;
     margin-bottom: 8px;

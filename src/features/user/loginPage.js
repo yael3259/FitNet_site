@@ -2,15 +2,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from './userApi';
 import React, { useState, useContext } from 'react';
 import './loginPage.css';
-import { Context } from '../../contexts';
+
+
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userRole, setUserRole] = useState('');
   const navigate = useNavigate();
-  
-  // const { updateRole } = useContext(Context); // גישה לפונקציה של עדכון התפקיד
+
 
   const handlesetEmailChange = (event) => {
     setEmail(event.target.value);
@@ -31,9 +30,7 @@ export const LoginForm = () => {
     try {
       let res = await login(data);
       alert("You login successfully!");
-      const userRole = res.data.role;
-      // setUserRole(userRole); // עדכון ה-state המקומי
-      // updateRole(userRole); // עדכון התפקיד בקונטקסט
+      console.log(data);
 
       navigate("/List");
     } catch (err) {
@@ -42,30 +39,30 @@ export const LoginForm = () => {
   };
 
   return (
-    // <MyProvider userRole={userRole} />
-      <div className="login-container">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h2>Login</h2>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <NavLink to={"/reset_pass"} className='logout'>Log out</NavLink>
+        <h2>Login</h2>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handlesetEmailChange}
-          />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handlesetEmailChange}
+        />
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handlePasswordChange}
-          />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handlePasswordChange}
+        />
 
-          <button type="submit">Login</button>
-          <NavLink to={"/reset_pass"}><p className='reg'>Forgot password?</p></NavLink>
-          <NavLink to={"/sign_in"}><p id='reg1' className='reg'>Don't have an account?</p></NavLink>
-        </form>
-      </div>
+        <button type="submit">Login</button>
+        <NavLink to={"/reset_pass"}><p className='reg'>Forgot password?</p></NavLink>
+        <NavLink to={"/sign_in"}><p id='reg1' className='reg'>Don't have an account?</p></NavLink>
+      </form>
+    </div>
   );
 }
 
