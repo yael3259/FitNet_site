@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
-import "./Cart.css";
-import React from "react";
+import { useState, useEffect, React } from "react";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { AddOrder } from "../order/orderApi";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import 'jspdf-autotable';
-import { AddOrder } from "../order/orderApi";
-import F from './files/F.png';
+import "./Cart.css";
 
 
 export const CartShopping = () => {
@@ -15,6 +12,7 @@ export const CartShopping = () => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const [couponMessage, setCouponMessage] = useState("");
+    const storedUserID = localStorage.getItem("userId");
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm({
         defaultValues: {
@@ -35,47 +33,6 @@ export const CartShopping = () => {
         setTotalAmount(total);
     }, []);
 
-    // const generatePDF = () => {
-    //     const doc = new jsPDF();
-
-    //     // הוספת הלוגו
-    //     const logo = 'path_to_logo.png'; // הכנס את הנתיב ללוגו
-    //     const pageWidth = doc.internal.pageSize.getWidth();
-    //     const logoWidth = 130;
-    //     const logoHeight = 55;
-    //     const logoX = pageWidth - logoWidth - 10; // מיקום X (10px מהקצה הימני)
-    //     const logoY = 10; // מיקום Y (10px מהקצה העליון)
-    //     doc.addImage(logo, 'PNG', logoX, logoY, logoWidth, logoHeight);
-
-    //     // הוספת כותרת
-    //     doc.setFontSize(20);
-    //     doc.setFont('helvetica', 'bold');
-    //     doc.text('Order Summary', 105, logoY + logoHeight + 10, { align: 'center' });
-
-    //     // הוספת פרטי המוצרים עם טבלה
-    //     const tableColumn = ["Name", "Price", "Quantity", "Total"];
-    //     const tableRows = cartItems.map((item) => [
-    //         item.name,
-    //         `$${item.price.toFixed(2)}`,
-    //         item.quantity,
-    //         `$${(item.price * item.quantity).toFixed(2)}`
-    //     ]);
-
-    //     doc.autoTable({
-    //         startY: logoY + logoHeight + 20, // תחילת הטבלה לאחר הלוגו והכותרת
-    //         head: [tableColumn],
-    //         body: tableRows,
-    //         theme: 'grid', // עיצוב רשת לטבלה
-    //         headStyles: { fillColor: [22, 160, 133] }, // צבע כותרת ירוק
-    //         bodyStyles: { fillColor: [244, 244, 244] }, // צבע רקע של התאים
-    //         alternateRowStyles: { fillColor: [255, 255, 255] }, // צבע רקע של שורות אלטרנטיביות
-    //     });
-
-    //     // שמירת ה-PDF
-    //     doc.save('order-summary.pdf');
-    // };
-
-
     const generatePDF = () => {
         const doc = new jsPDF();
 
@@ -85,13 +42,13 @@ export const CartShopping = () => {
         const logoHeight = 18;
         const logoX = pageWidth - logoWidth - 10;
         const logoY = 10;
-    
+
         doc.addImage(logo, 'PNG', logoX, logoY, logoWidth, logoHeight);
-    
+
         doc.text("Order Receipt", 14, logoY + logoHeight + 10);
-        doc.text(`Total Amount: $${totalAmount.toFixed(2)}`, 14, logoY + logoHeight + 20);  // מיקום טקסט אחרי הלוגו
+        doc.text(`Total Amount: $${totalAmount.toFixed(2)}`, 14, logoY + logoHeight + 20);
         doc.text("Products:", 14, logoY + logoHeight + 30);
-    
+
         const tableColumn = ["Name", "Price", "Quantity", "Total"];
         const tableRows = cartItems.map((item) => [
             item.name.toString(),
@@ -99,21 +56,30 @@ export const CartShopping = () => {
             item.quantity.toString(),
             `$${(item.price * item.quantity).toFixed(2)}`
         ]);
-    
+
         doc.autoTable({
             startY: logoY + logoHeight + 40,
             head: [tableColumn],
             body: tableRows
         });
-    
+
         doc.save("order_receipt.pdf");
     };
-    
 
     const handlePayment = async (data) => {
         if (data.cardNumber && data.expiryDate && data.cvv && data.address && data.targetDate) {
             try {
-                const response = await AddOrder({ ...data, products: cartItems });
+                if (!storedUserID) {
+                    alert("User is not logged in.");
+                    return;
+                }
+                console.log(storedUserID);
+
+                const response = await AddOrder({
+                    ...data,
+                    products: cartItems,
+                    userId: storedUserID
+                });
                 setPaymentSuccess(true);
                 generatePDF();
                 setCartItems([]);
@@ -133,6 +99,12 @@ export const CartShopping = () => {
             }
         }
     };
+
+    const handleRemoveItem = (itemToRemove) => {
+        const updatedCart = cartItems.filter(item => item._id !== itemToRemove._id);
+        setCartItems(updatedCart);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+    }
 
     const CuponCode = (event) => {
         const code = event.target.value.trim();
@@ -163,8 +135,7 @@ export const CartShopping = () => {
                 alert("Invalid coupon code");
                 return;
         }
-
-        setTotalAmount(finalSum.toFixed(2));
+        setTotalAmount(parseFloat(finalSum.toFixed(2)));
         setCouponMessage(successMessage);
         setTimeout(() => setCouponMessage(""), 5000);
     };
@@ -188,6 +159,15 @@ export const CartShopping = () => {
                                 <p className="price_item">$ {item.price}</p>
                                 <p className="total_price">$ {(item.price * item.quantity).toFixed(2)}</p>
                             </div>
+                            <button
+                                onClick={() => handleRemoveItem(item)}
+                                className="delete">
+                                <img
+                                    src="https://cdn-icons-png.freepik.com/256/7612/7612810.png?ga=GA1.1.9839848.1731949521&semt=ais_hybrid"
+                                    height={20}
+                                    width={20}
+                                    alt="Delete" />
+                            </button>
                         </div>
                     ))}
                 </div>
@@ -205,10 +185,12 @@ export const CartShopping = () => {
                         <input type="text" placeholder="CVV" {...register("cvv", { required: "CVV is required", pattern: /^[0-9]{3}$/ })} />
                         {errors.cvv && <p className="error">{errors.cvv.message}</p>}
 
-                        <input type="text" placeholder="Coupon Code (optional)" {...register("cuponCode")} onBlur={CuponCode} />
+                        <input type="text" placeholder="Coupon Code (optional)" 
+                        {...register("cuponCode")} onBlur={CuponCode} />
 
                         <div className="small_fileds">
-                            <input type="text" placeholder="Address" {...register("address", { required: "Address is required" })} />
+                            <input type="text" placeholder="Address" 
+                            {...register("address", { required: "Address is required" })} />
                             {errors.address && <p className="error">{errors.address.message}</p>}
 
                             <input type="date" placeholder="Target Date" {...register("targetDate", { required: "Target date is required" })} />
@@ -217,7 +199,7 @@ export const CartShopping = () => {
                         <button type="submit" className="pay-button">Pay Now</button>
                     </form>
 
-                    {paymentSuccess && <p className="success-message">Payment Successful! A receipt has been downloaded.</p>}
+                    {paymentSuccess && <p pclassName="success-message">PaymentSuccessful!</p>}
                 </div>
             </div>
         </div>

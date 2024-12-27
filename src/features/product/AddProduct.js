@@ -25,7 +25,7 @@ export function AddProductForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="body1">
                 <div className="bb">
-                    <p className="p">ADD PRODUCT</p><br></br>
+                    <p className="p" id="addPtytle">ADD PRODUCT</p><br></br>
 
                     <div className="label-container">
                         <label htmlFor="name" className="label transition-element">Name</label>

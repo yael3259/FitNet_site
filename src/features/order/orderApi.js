@@ -29,3 +29,30 @@ export const deleteOrder = (id) => {
 export const AddOrder = (order) => {
     return axios.post(baseUrl, order);
 }
+
+// export const AddOrder = (order) => {
+//     // לוג הנתונים שנשלחים לשרת
+//     console.log("Sending order data:", order);
+    
+//     // שליחת הבקשה לשרת
+//     return axios.post(baseUrl, order)
+//         .then(response => {
+//             // לוג התשובה שהתקבלה מהשרת
+//             console.log("Server response:", response.data);
+//             return response;
+//         })
+//         .catch(error => {
+//             // לוג במקרה של שגיאה בתשובה מהשרת
+//             console.error("Order error:", error.response ? error.response.data : error.message);
+            
+//             // אם יש תשובת שגיאה מהשרת, נדפיס את המידע שלה
+//             if (error.response) {
+//                 console.log("Error response data:", error.response.data);
+//                 console.log("Error response status:", error.response.status);
+//                 console.log("Error response headers:", error.response.headers);
+//             }
+            
+//             throw error;
+//         });
+// };
+

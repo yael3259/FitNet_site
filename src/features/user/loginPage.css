@@ -15,7 +15,7 @@ body {
 
 .login-form {
   background-color: #34495e4b;
-  padding: 30px 40px 40px 40px;
+  padding: 20px 40px 40px 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.662);
   width: 400px;
@@ -71,10 +71,11 @@ body {
 .logout{
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .logout:hover{
-  color: #ffdf8e;
+  color: #fbde94;
 }
 
 .reg {

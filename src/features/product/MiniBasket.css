@@ -167,6 +167,10 @@
         background-color: rgb(255, 227, 199);
     }
 
+    .basket:hover {
+        border: solid 2px rgb(252, 141, 23);
+    }
+
     .item-container {
         grid-template-columns: repeat(2, 1fr);
 

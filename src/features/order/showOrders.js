@@ -10,6 +10,7 @@ export const ShowAllOrders = () => {
     const [orders, setOrders] = useState([]);
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
+    const storedUserID = localStorage.getItem("userId");
 
     const fetchAllOrders = async () => {
         try {
@@ -40,8 +41,8 @@ export const ShowAllOrders = () => {
                         <button className="deleteOrder_button">delete order</button>
                         <h3>Order ID: {order._id}</h3>
                         <div className="orderD">
-                            <p><strong>User ID:</strong> {order.userId}</p>
-                            <p><strong>Address:</strong> {order.address}</p>
+                        <p><strong>User ID:</strong> {storedUserID}</p>
+                        <p><strong>Address:</strong> {order.address}</p>
                             <p><strong>Target Date:</strong> {formatDate(order.targetDate)}</p>
                             <p><strong>Status:</strong> {order.isSent ? "Sent" : "Pending"}</p>
                         </div>

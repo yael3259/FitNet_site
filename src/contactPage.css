@@ -3,13 +3,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    margin-top: -5%;
+    margin-top: -3.5%;
     padding: 70px 30px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 50px;
-    padding-bottom: 26.4vh;
+    padding-bottom: 16vh;
     padding-top: 165px;
 }
 
@@ -23,8 +23,8 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 30px;
+    padding-right: 60px;
 }
 
 .cf {

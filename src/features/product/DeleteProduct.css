@@ -10,13 +10,21 @@
     padding-bottom: 6%;
 }
 
-.search-form{
-    background-color: #1c252b;
-    background-size: 100%;
-    padding-bottom: 125px;
+.body1 {
+    color: #ffffff !important;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #1c252b !important;
 }
 
-.search_input{
+.search-form {
+    background-color: #1c252b !important;
+    background-size: 100%;
+    /* padding-bottom: 125px; */
+    padding-bottom: 200px;
+}
+
+.search_input {
     border: 2px solid #faa722 !important;
     background-color: transparent;
     width: 350px !important;
@@ -26,48 +34,23 @@
     border-radius: 8px;
 }
 
-/* .searchInput{
-    background-color: rgb(255, 255, 255);
-    width: 100px;
-} */
-
-.update-form{
-    background-color: transparent;
-    text-align: center;
-    padding-top: 7%;
-    padding-bottom: 6%;
-    font-size: 25px;
-}
-
 .title {
     text-align: center;
     font-size: 35px;
 }
 
 .bb {
-    background-color: #1c252b;
+    background-color: #1c252b !important;
     font-size: 35px;
 }
 
 .body {
-    padding-top: 3%;
-    padding-bottom: 3%;
+    /* padding-top: 3%;
+    padding-bottom: 3%; */
+    padding: 3%;
+    background-color: #1c252b !important;
+    text-align: center;
 }
-
-/* .search {
-    background-color: #03b50c;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    margin-left: 6px;
-    width: 100px;
-    outline: none;
-}
-
-.search:focus {
-    border: 2px solid #4caf50;
-} */
 
 .reset_button {
     background-color: #a7a7a779;
@@ -139,7 +122,7 @@
     outline: none;
 }
 
-.search_button:hover{
+.search_button:hover {
     background-color: #4caf50;
     color: #12171b;
     cursor: pointer;
@@ -245,7 +228,7 @@ span {
     color: rgb(197, 247, 190);
 }
 
-.ok{
+.ok {
     color: #000000;
     background-color: rgb(255, 255, 255);
     padding: 15px;
@@ -254,22 +237,38 @@ span {
     border-radius: 10px;
 }
 
-.ok:hover{
+.ok:hover {
     background-color: #b0ffb3;
     border: 2px solid #ffffff;
 }
 
 @media (max-width: 768px) {
-    .body{
-        margin-top: 89px;
+    .body {
+        margin: -230px 0 0 -120px;
     }
-    .search_input{
+
+    .search_input {
         width: 230px !important;
     }
-    .search_button{
+
+    .search_button {
         width: 100px !important;
     }
-    .reset_button{
+
+    .reset_button {
         margin-bottom: 165px;
+    }
+
+    .body_delete {
+        margin-top: 170px;
+        margin-left: 130px;
+    }
+
+    .reset_button{
+        margin-bottom: 0;
+    }
+    .body2 {
+        text-align: center;
+        align-self: center;
     }
 }

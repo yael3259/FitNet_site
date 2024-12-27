@@ -46,7 +46,7 @@ export function UpdateOrder() {
     return (
         <div className="update_order_form">
             {order ? (
-                <div className="body2">
+                <div className="bodyUpdateOrder">
                     {/* <p><strong>Order ID:</strong> {orderId}</p> */}
                     {/* <p className="sent">Has the invitation been sent?</p> */}
                     <p className="sent">Has the order been confirmed for delivery?</p>

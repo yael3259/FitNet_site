@@ -7,7 +7,7 @@
     background-color: #2C2F3A;
 }
 
-.body2 {
+.bodyUpdateOrder {
     background-color: #3d4a5c76;
     margin-top: -15px;
     padding: 40px;
@@ -52,7 +52,7 @@
         min-height: 96vh;
     }
 
-    .body2 {
+    .bodyUpdateOrder {
         padding: 20px;
     }
 

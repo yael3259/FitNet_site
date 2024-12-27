@@ -42,7 +42,7 @@ export function DeleteProductForm() {
 
     return (
         <div>
-            <div className="body">
+            <div className="body_delete">
             <form onSubmit={handleSubmit(onSubmit)} className="search-form">
                     <div className="body1">
                         <div className="bb">
