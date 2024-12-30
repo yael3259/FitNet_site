@@ -22,3 +22,7 @@ export const deleteUser = (userId) => {
     console.log("Deleting user with ID:", userId);
     return axios.delete(`${baseUrl}/${userId}`);
 };
+
+export const log_outUser =(userId)=>{
+    return axios.delete(`${baseUrl}/${userId}`);
+}

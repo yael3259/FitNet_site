@@ -41,10 +41,10 @@ export function DeleteProductForm() {
     };
 
     return (
-        <div>
+        <div className='del_div'>
             <div className="body_delete">
-            <form onSubmit={handleSubmit(onSubmit)} className="search-form">
-                    <div className="body1">
+                <form onSubmit={handleSubmit(onSubmit)} className="search-form">
+                    <div className="body1" id='deleteSearchSaction'>
                         <div className="bb">
                             <br></br>
 

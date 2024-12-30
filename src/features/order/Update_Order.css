@@ -25,6 +25,16 @@
     margin-bottom: 30px;
 }
 
+.yes_No{
+    color: #ffffff !important;
+    border: 2px solid #10a562 !important;
+    padding: 13px 30px !important;
+    background-color: transparent;
+    font-size: 20px !important;
+    border-radius: 8px !important;
+    width: 204px !important;
+}
+
 .ok_b {
     color: #ffffff;
     background-color: #10a562;

@@ -199,7 +199,7 @@ export const CartShopping = () => {
                         <button type="submit" className="pay-button">Pay Now</button>
                     </form>
 
-                    {paymentSuccess && <p pclassName="success-message">PaymentSuccessful!</p>}
+                    {paymentSuccess && <p className="success-message">Payment Successful!</p>}
                 </div>
             </div>
         </div>

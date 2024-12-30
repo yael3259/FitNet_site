@@ -5,10 +5,11 @@ import { MiniBasket } from './MiniBasket';
 import './Details.css';
 import { useLocation } from 'react-router-dom';
 
-export const Ditails = () => {
+
+export const Details = () => {
     const location = useLocation();
     const [quantity, setQuantity] = useState(1);
-    const [selectedColor, setSelectedColor] = useState(''); // מצב חדש לשמירת הצבע שנבחר
+    const [selectedColor, setSelectedColor] = useState('');
     const [closeTimeout, setCloseTimeout] = useState(null);
     const [showMiniBasket, setShowMiniBasket] = useState(false);
     const [cartItems, setCartItems] = useState(() => {
@@ -40,7 +41,7 @@ export const Ditails = () => {
         const product = {
             ...location.state,
             quantity,
-            color: selectedColor, // העברת הצבע שנבחר
+            color: selectedColor,
         };
 
         setCartItems(prevItems => {

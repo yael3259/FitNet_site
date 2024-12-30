@@ -1,3 +1,12 @@
+.body_delete{
+    background-color: transparent;
+}
+
+.del_div{
+    background-color: #1c252b;
+    padding-top: 3%;
+}
+
 .body2 {
     background-color: #1c252b;
     color: #22fa2a;
@@ -244,7 +253,11 @@ span {
 
 @media (max-width: 768px) {
     .body {
-        margin: -230px 0 0 -120px;
+        margin: -300px 0 0 -120px;
+    }
+
+    #deleteSearchSaction{
+        margin-top: 0% !important;
     }
 
     .search_input {

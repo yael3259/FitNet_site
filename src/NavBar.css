@@ -22,7 +22,15 @@
     padding: 0 0;
 }
 
-#userLink{
+.overlay-navbar:hover {
+    color: rgba(149, 245, 144, 0.884);
+}
+
+.overlay-navbar.active-link {
+    color: rgba(149, 245, 144, 0.884);
+}
+
+#userLink {
     margin-left: 5px;
     text-transform: uppercase;
 }
@@ -36,10 +44,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1px !important;
-}
-
-.overlay-navbar:hover {
-    color: rgba(149, 245, 144, 0.884);
 }
 
 .color-button {

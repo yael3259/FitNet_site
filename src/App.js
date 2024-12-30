@@ -12,7 +12,7 @@ import { addProduct, updateProduct } from './features/product/productApi';
 import { AddProductForm } from './features/product/AddProduct';
 import { UpdateProductForm } from './features/product/UpdateProduct';
 import { DeleteProductForm } from './features/product/DeleteProduct';
-import { Ditails } from './features/product/Details';
+import { Details } from './features/product/Details';
 import { NavBar } from './NavBar';
 import { Context } from "./contexts";
 import { Contact } from './contactPage';
@@ -41,7 +41,7 @@ function App() {
       <Routes>
         <Route path='' element={<List />} />
         <Route path='list' element={<List />} />
-        <Route path='details/:id' element={<Ditails />} />
+        <Route path='details/:id' element={<Details />} />
         <Route path='login' element={<LoginForm />} />
         <Route path='sign_in' element={<RegistrationPage />} />
         <Route path='showUsers' element={<ShowAllUsers />} />
@@ -49,7 +49,6 @@ function App() {
         <Route path='addProduct' element={<AddProductForm />} />
         <Route path='update' element={<Update />} />
         <Route path='update_product' element={<UpdateProductForm />} />
-        {/* <Route path='update_order' element={<UpdateOrder />} /> */}
         <Route path='update_order/:orderId' element={<UpdateOrder />} />
         <Route path='showOrders' element={<ShowAllOrders />} />
         <Route path='adminPage' element={<Admin />} />
@@ -62,3 +61,4 @@ function App() {
 }
 
 export default App;
+

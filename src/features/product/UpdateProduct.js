@@ -45,7 +45,8 @@ export function UpdateProductForm() {
         <div>
             <div className="body_update">
                 <form onSubmit={handleSubmit(onSubmit)} className="search-form">
-                    <div className="body1">
+                    <div className="body1" id='searchSaction'>
+
                         <div className="bb">
                             <br></br>
 
@@ -61,7 +62,7 @@ export function UpdateProductForm() {
 
                 {product && (
                     <form onSubmit={handleSubmit(onUpdateSubmit)} className="update-form">
-                        <div className="body2">
+                        <div className="bodyUpdate">
                             <p className='tt' id='tt'>Update product</p>
 
                             <input type="hidden" id="id" value={product._id} {...register('id')} />
@@ -108,7 +109,7 @@ export function UpdateProductForm() {
                             </div> */}
                             <br></br><br></br><br></br>
 
-                            <button type="submit" className="transparent-submit transition-element">Submit</button>
+                            <button type="submit" className="submit_updatePage">Submit</button>
                         </div>
                     </form>
                 )}

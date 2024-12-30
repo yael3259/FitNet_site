@@ -4,6 +4,7 @@ import { getAllProduct } from './productApi';
 import './List.css';
 import { MiniBasket } from "./MiniBasket";
 import { Link } from 'react-router-dom';
+import F from './files/F.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
 
@@ -106,9 +107,15 @@ const List = () => {
         <>
             {showMiniBasket && <MiniBasket cartItems={cartItems} setCartItems={setCartItems} />}
             <div className="bg">
+                <img src={F} className='logoImage1' width={200} height={100} style={{ position: 'relative', top: '260px', left: '141px' }} />
                 <h1 id='f' className="header"> Online </h1>
                 <h1 className="header"> Fitness </h1>
                 <h1 className="header"> Store </h1>
+            </div>
+
+            <div className="hiddenLogo">
+                <img src={F} className="logoImage" />
+                <h1 className="header2">Online Fitness Store</h1>
             </div>
 
             <div className="parallax"></div>
@@ -122,6 +129,7 @@ const List = () => {
                         height={45}
                         width={45}
                         style={{ position: 'relative', top: '6.5px', left: "10px" }} /></p>
+                        
                 <div className="coupon-container">
                     <div className="coupon">
                         <p className='lab'>Get 10% off for the holiday</p>

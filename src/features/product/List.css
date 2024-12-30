@@ -10,7 +10,7 @@ body {
     background-size: cover;
     background-position: center center;
     width: 100vw;
-    height: 104vh;
+    height: 106.5vh;
     margin-top: -120px;
     margin-bottom: 6%;
     position: relative;
@@ -18,12 +18,11 @@ body {
 }
 
 .lab {
-    color: rgb(194, 255, 250);
+    color: rgb(255, 114, 114);
     font-size: 18px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
     -webkit-text-stroke: 0.2px rgb(0, 0, 0);
-
 }
 
 .parallax {
@@ -36,6 +35,31 @@ body {
     background-position: center;
     position: relative;
     z-index: 1;
+}
+
+.hiddenLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -6%;
+    visibility: hidden;
+}
+
+.logoImage {
+    margin-right: 0;
+    margin-top: -5px;
+    width: 120px;
+    height: 55px;
+}
+
+.header2 {
+    direction: ltr;
+    margin-left: 1%;
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    font-size: 25px;
+    color: #ffb48f;
 }
 
 .overlay {
@@ -113,7 +137,7 @@ body {
 }
 
 #f {
-    padding-top: 18%;
+    padding-top: 17%;
 }
 
 .header {
@@ -122,7 +146,8 @@ body {
     font-family: Arial, sans-serif;
     font-weight: lighter;
     letter-spacing: 1px;
-    font-size: 40px;
+    font-size: 35px;
+    color: #ffb48f;
 }
 
 .img {
@@ -148,7 +173,6 @@ body {
     z-index: 1000;
     margin-bottom: 20px;
     transform: translateX(201%);
-    /* transform: translateX(-18%); */
 }
 
 .search-input {
@@ -179,7 +203,7 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     color: rgb(34, 34, 34);
-    height: 311px;
+    height: 310.5px;
     width: 300px;
     font-size: 20px;
     display: flex;
@@ -308,8 +332,27 @@ body {
         transform: translateX(25%);
     }
 
-    .bg{
+    .bg {
         height: 114.5vh;
+    }
+
+    .header {
+        direction: ltr;
+        margin-left: 14.8%;
+        font-family: Arial, sans-serif;
+        font-weight: lighter;
+        letter-spacing: 1px;
+        font-size: 35px;
+        color: #ffb48f;
+    }
+
+    #f {
+        margin-top: 8%;
+    }
+
+    .logoImage1 {
+        margin-top: 5%;
+        margin-left: 0;
     }
 }
 
@@ -320,20 +363,30 @@ body {
 
     .load-more-button {
         transform: translateX(-30%);
-        /* margin-top: -10px; */
         margin-top: -10px;
     }
 
     .search-container {
         transform: translateX(25%);
     }
+
+    .hiddenLogo {
+        visibility: visible;
+        margin: -20px 0 2% 0;
+    }
+
+    .logoImage1 {
+        visibility: hidden;
+    }
+
+    .header {
+        visibility: hidden;
+    }
 }
 
 @media (max-width: 768px) {
     .bg {
         padding-top: 250px;
-        /* margin-top: 106px; */
-
     }
 
     .load-more-button {
@@ -342,16 +395,39 @@ body {
     }
 
     .search-container {
-        /* transform: translateX(25%); */
         transform: translateX(-31%);
+    }
+
+    .coupon {
+        background-color: rgba(255, 255, 255, 0.788);
+        padding: 7px;
+        border-radius: 10px;
+        text-align: center;
+        margin: 10px;
+        width: 200px;
+    }
+
+    .coupon-container {
+        margin: 10px;
+    }
+
+    .lab{
+        color: rgb(255, 134, 134);
+    }
+    
+    .coupon button:hover {
+        background-color: #ffd1d1;
+    }
+
+    .coupon-code {
+        font-weight: bold;
+        color: #777777;
     }
 }
 
 @media (max-width: 768px) {
     .search-container {
         position: sticky;
-        /* top: 122px; */
-        /* top: 94px; */
         top: 0px;
     }
 }

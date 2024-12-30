@@ -20,22 +20,16 @@ export const ShowAllUsers = () => {
         }
     };
 
-    const handleDelete = async (userToRemove) => {
+    const handleDelete = async (userID) => {
         try {
-            const res = await deleteUser(userToRemove._id);
-            if (res.status === 200) {
-                console.log("User deleted successfully");
-            } else {
-                console.error("Error deleting user:", res.data);
-            }
-            setRemovedUser(userToRemove);
-            setShowRemoveModal(true);
-            fetchAllUsers();
+            await deleteUser(userID);
+            alert("User deleted successfully");
+            fetchAllUsers(); // רענון הרשימה
         } catch (err) {
             console.error("Failed to delete user:", err.response?.data || err.message);
         }
     };
-
+    
 
     const closeRemoveModal = () => {
         setShowRemoveModal(false);
@@ -52,12 +46,13 @@ export const ShowAllUsers = () => {
             <div className="users-grid">
                 {arr.map((user) => (
                     <div className={`user-card ${user.role === "ADMIN" ? "admin-user" : ""}`} key={user._id}>
-                    <p><strong>User Name: </strong>{user.userName}</p>
+                        <p><strong>User Name: </strong>{user.userName}</p>
+                        <p><strong>ID: </strong>{user._id}</p>
                         <p><strong>Email: </strong>{user.email}</p>
                         <p><strong>Role: </strong>{user.role}</p>
                         <p><strong>Enter Date: </strong>{user.enterDate.split("T")[0]}</p>
 
-                        <button className="delete-user-btn" onClick={() => handleDelete(user)}>
+                        <button className="delete-user-btn" onClick={() => handleDelete(user._id)}>
                             <i className="fas fa-trash-alt"></i> Delete User
                         </button>
                     </div>

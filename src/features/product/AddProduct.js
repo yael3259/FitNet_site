@@ -22,8 +22,8 @@ export function AddProductForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="body1">
+        <form onSubmit={handleSubmit(onSubmit)} className="addForm">
+            <div className="add_body1">
                 <div className="bb">
                     <p className="p" id="addPtytle">ADD PRODUCT</p><br></br>
 
