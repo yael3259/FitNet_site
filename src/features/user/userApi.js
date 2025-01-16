@@ -23,6 +23,11 @@ export const deleteUser = (userId) => {
     return axios.delete(`${baseUrl}/${userId}`);
 };
 
-export const log_outUser =(userId)=>{
+export const log_outUser = (userId) => {
     return axios.delete(`${baseUrl}/${userId}`);
+}
+
+export const resetPasswordUser = (data) => {
+    console.log("axios: ", data);
+    return axios.put(baseUrl, data);
 }

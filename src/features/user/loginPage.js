@@ -77,6 +77,7 @@ export const LoginForm = () => {
           name="email"
           placeholder="Email"
           onChange={handlesetEmailChange}
+          required
         />
 
         <input
@@ -84,6 +85,7 @@ export const LoginForm = () => {
           name="password"
           placeholder="Password"
           onChange={handlePasswordChange}
+          required
         />
 
         <button type="submit">Login</button>

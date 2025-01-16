@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { resetPasswordUser } from "./userApi";
 import "./forgotPassword.css";
 
 
 
 export const ResetPassword = () => {
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Sending email:", email);
+        console.log("email from user: ", email);
+        console.log("password from user: ", password);
         try {
-            const response = await axios.post("http://localhost:5000/domain/api/user/reset-password", { email });
-            console.log("Response from server:", response.data);
-            setMessage(response.data.message);
+            const res = await resetPasswordUser({ email, password });
+            console.log("Response from server:", res.data);
+            setMessage(res.data.message || "Password reset successfully");
             setError("");
         } catch (err) {
             console.error("Error response:", err.response?.data);
@@ -24,6 +28,7 @@ export const ResetPassword = () => {
             setMessage("");
         }
     };
+
 
     return (
         <div className="reset-container">
@@ -34,15 +39,27 @@ export const ResetPassword = () => {
                 </label>
                 <input
                     id="email"
+                    name="email"
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                     className="reset-input"
                     placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className="password-input"
+                    placeholder="Enter a new password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
                 <button type="submit" className="reset-button">
-                    Send Reset Link
+                    Submit
                 </button>
                 {message && <p className="reset-success-message">{message}</p>}
                 {error && <p className="reset-error-message">{error}</p>}

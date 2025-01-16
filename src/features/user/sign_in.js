@@ -61,6 +61,7 @@ export const RegistrationPage = () => {
                     placeholder="User name"
                     value={userName}
                     onChange={handleUsernameChange}
+                    required
                 />
                 <input
                     type="password"
@@ -68,6 +69,7 @@ export const RegistrationPage = () => {
                     placeholder="Password"
                     value={password}
                     onChange={handlePasswordChange}
+                    required
                 />
                 <input
                     type="email"
@@ -75,6 +77,7 @@ export const RegistrationPage = () => {
                     placeholder="Email"
                     value={email}
                     onChange={handleEmailChange}
+                    required
                 />
                 <button type="submit">Register</button>
                 <NavLink to={"/login"} className="back_to_login">
