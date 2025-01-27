@@ -95,6 +95,16 @@ body {
   margin-left: 42.2px;
 }
 
+.user_spinner{
+  width: 20px;
+    height: 20px;
+    border: 4px solid #ffffff;
+    border-top: 4px solid #4caf50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
 @media (max-width: 768px) {
   .login-container{
       margin-top: 30px;

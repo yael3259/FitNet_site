@@ -35,6 +35,11 @@
     text-transform: uppercase;
 }
 
+#urlPicUser{
+    border-radius: 50%;
+    border: 0px solid white;
+}
+
 .nav_con {
     position: fixed;
     padding: 8px 15px;

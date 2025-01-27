@@ -10,7 +10,9 @@ export const RegistrationPage = () => {
     const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [url, setUrl] = useState('');
     const [userRole, setUserRole] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
 
@@ -26,27 +28,36 @@ export const RegistrationPage = () => {
         setEmail(event.target.value);
     };
 
+    const handleUrlChange = (event) => {
+        setUrl(event.target.value);
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!userName || !password || !email) {
             alert("Please fill all the fields");
             return;
         }
-        const data = { email, password, userName };
-        console.log("Submitted data:", data);
+        setLoading(true);
+
+        const data = { email, password, userName, url };
+        console.log("data for submit:", data);
 
         try {
             const res = await addUser(data);
+            // localStorage.setItem("url", res.data.url);
+            // console.log("URL:", localStorage.getItem("url"));
+
             alert("You signed up successfully!");
             console.log("Response from server:", res);
 
-            // let userRole = res.data.role;
-            // console.log("role: " + userRole);
             setUserRole(res.data.role);
 
             navigate("/login");
         } catch (err) {
             alert(err.response?.data?.message || "An error occurred. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -79,7 +90,21 @@ export const RegistrationPage = () => {
                     onChange={handleEmailChange}
                     required
                 />
-                <button type="submit">Register</button>
+                <input
+                    type="url"
+                    name="url"
+                    placeholder="picture (optional)"
+                    value={url}
+                    onChange={handleUrlChange}
+                />
+
+                <button type="submit" disabled={loading}>
+                    {loading ? (
+                        <span className="user_spinner"></span>
+                    ) : (
+                        "Register"
+                    )}
+                </button>
                 <NavLink to={"/login"} className="back_to_login">
                     <i className="fas fa-arrow-left" style={{ marginRight: '8px' }}></i>
                     Back to login

@@ -31,24 +31,25 @@ body {
 }
 
 .registration-form input {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .registration-form input[type="text"],
 .registration-form input[type="password"],
-.registration-form input[type="email"] {
-  width: 100%;
-  margin: 10px auto;
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #b0c2d0;
-  color: #000000 !important;
-  letter-spacing: 1px;
-  font-weight: bold;
-  font-size: 16px;
-  transition: border-bottom 0.3s ease;
-  border-bottom: 2px solid transparent;
+.registration-form input[type="email"],
+.registration-form input[type="url"] {
+    width: 100%;
+    margin: 10px auto;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #b0c2d0;
+    color: #000000 !important;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
 .registration-form input:focus {
@@ -79,15 +80,25 @@ body {
     text-decoration: none !important;
     display: inline-block;
     margin-top: 15px;
-  }
-  
-  .back_to_login:hover {
+}
+
+.back_to_login:hover {
     color: #c4f8c2;
     text-decoration: none;
-  }
+}
+
+.user_spinner {
+    width: 20px;
+    height: 20px;
+    border: 4px solid #ffffff;
+    border-top: 4px solid #4caf50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
 
 @media (max-width: 768px) {
-    .registration-form{
+    .registration-form {
         margin-top: 150px;
     }
 }

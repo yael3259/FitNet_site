@@ -147,7 +147,7 @@
     text-align: center;
 }
 
-#cupon_cartPage{
+#cupon_cartPage {
     background-color: #192025;
 }
 
@@ -198,7 +198,7 @@
     font-size: 15px;
 }
 
-.color_choosed{
+.color_choosed {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -208,49 +208,58 @@
     margin: 6px 10px -10px 0 !important;
 }
 
-.small_fileds{
+.small_fileds {
     display: flex;
     gap: 6px;
 }
 
-.remove-modal {
+.notification-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    right: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    color: #000;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.notification-box {
     background-color: white;
     padding: 20px;
-    padding-top: 40px;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    width: 300px;
 }
 
-.X_button {
-    position: absolute;
-    top: 10px;
-    left: 6px;
+.notification-box p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.close-btn {
     background: none;
     border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
     cursor: pointer;
+    padding: 0 !important;
+    padding-bottom: 10px !important;
 }
 
-.X_button i {
-    font-size: 20px;
-    color: #3b3b3b;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
+.close-btn:hover {
+    color: #ff0000;
+}
+
+span {
+    margin-right: 5px;
+    color: #1e9e22;
+    font-size: 16px;
 }
 
 * {

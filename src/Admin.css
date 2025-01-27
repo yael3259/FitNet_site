@@ -1,7 +1,7 @@
 .adminContainer {
     display: flex;
     flex-direction: row;
-    gap: 17px;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     margin: 0;
@@ -9,31 +9,61 @@
 
 .ad_p {
     margin-top: 10%;
+    margin-bottom: 70px;
     text-align: center;
     font-size: 30px;
+    font-weight: bold;
+    color: #686868;
 }
 
 .AD_button {
-    padding: 30px 15px 30px 15px;
+    padding: 20px 15px;
     text-align: center;
     text-decoration: none;
-    background-color: rgb(255, 185, 88);
-    font-size: 20px;
-    border-radius: 6px;
-    font-weight: bold;
+    background-color: #ffc085;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
     width: 180px;
-    margin-top: 50px;
     cursor: pointer;
-    color: rgb(72, 72, 72);
-    border: none;
+    color: #494949;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
 .AD_button:hover {
-    background-color: rgb(209, 153, 73);
+    background-color: #ffb573;
+    color: #333;
+    border: 2px solid #ffa45b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.AD_button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1200px) {
+    .adminForm {
+        margin-top: 220px;
+    }
 }
 
 @media (max-width: 768px) {
-    .adminForm{
+    .adminForm {
         margin-top: 220px;
+    }
+
+    .AD_button {
+        width: 150px;
+        padding: 15px 10px;
+        font-size: 16px;
+    }
+
+    .adminContainer {
+        flex-direction: column;
+        gap: 15px;
     }
 }

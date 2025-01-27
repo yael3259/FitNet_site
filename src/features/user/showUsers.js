@@ -24,12 +24,12 @@ export const ShowAllUsers = () => {
         try {
             await deleteUser(userID);
             alert("User deleted successfully");
-            fetchAllUsers(); // רענון הרשימה
+            fetchAllUsers();
         } catch (err) {
             console.error("Failed to delete user:", err.response?.data || err.message);
         }
     };
-    
+
 
     const closeRemoveModal = () => {
         setShowRemoveModal(false);
@@ -39,6 +39,7 @@ export const ShowAllUsers = () => {
         fetchAllUsers();
     }, []);
 
+
     return (
         <div className="users-container">
             <p className="userTytle">All Users</p>
@@ -46,6 +47,7 @@ export const ShowAllUsers = () => {
             <div className="users-grid">
                 {arr.map((user) => (
                     <div className={`user-card ${user.role === "ADMIN" ? "admin-user" : ""}`} key={user._id}>
+                        <img src= {user.url || "https://cdn-icons-png.freepik.com/256/12259/12259393.png?ga=GA1.1.394280285.1712833522&"} width={25} height={25} id="urlPic" />
                         <p><strong>User Name: </strong>{user.userName}</p>
                         <p><strong>ID: </strong>{user._id}</p>
                         <p><strong>Email: </strong>{user.email}</p>

@@ -11,12 +11,16 @@ export const ResetPassword = () => {
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("email from user: ", email);
         console.log("password from user: ", password);
+
+        setLoading(true);
+
         try {
             const res = await resetPasswordUser({ email, password });
             console.log("Response from server:", res.data);
@@ -26,6 +30,8 @@ export const ResetPassword = () => {
             console.error("Error response:", err.response?.data);
             setError(err.response?.data?.message || "Something went wrong!");
             setMessage("");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -58,9 +64,15 @@ export const ResetPassword = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit" className="reset-button">
-                    Submit
+
+                <button type="submit" className="reset-button" disabled={loading}>
+                    {loading ? (
+                        <span className="user_spinner"></span>
+                    ) : (
+                        "Submit"
+                    )}
                 </button>
+
                 {message && <p className="reset-success-message">{message}</p>}
                 {error && <p className="reset-error-message">{error}</p>}
                 <NavLink to={"/login"} className="back_to_login">
