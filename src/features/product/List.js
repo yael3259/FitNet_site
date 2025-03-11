@@ -12,15 +12,15 @@ import { faSearch, faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
 
 const List = () => {
     const [arr, setArr] = useState([]); // רשימת המוצרים
-    const [page, setPage] = useState(1); // דף הנוכחי בעמוד
+    const [page, setPage] = useState(1); // דף נוכחי בעמוד
     const [searchText, setSearchText] = useState(''); // חיפוש
     const [cartItems, setCartItems] = useState([]); // פריטים בסל
     const [loading, setLoading] = useState(false); // האם טעינה מתבצעת
     const [hoveredProductId, setHoveredProductId] = useState(null); // מוצר ממוסך
     const [hoveredImage, setHoveredImage] = useState(null); // תמונה ממוסכת
-    const [showMiniBasket, setShowMiniBasket] = useState(false); // האם להציג את העגלה המינימלית
+    const [showMiniBasket, setShowMiniBasket] = useState(false); // האם להציג סל מוקט
     const [closeTimeout, setCloseTimeout] = useState(null); // זמן סגירת סל מוקטן
-    const [copiedCode, setCopiedCode] = useState(null); // Track copied code
+    const [copiedCode, setCopiedCode] = useState(null); // קופונ הנחה
 
     useEffect(() => {
         loadProducts(page, searchText);
@@ -34,6 +34,7 @@ const List = () => {
         }
     }, [cartItems]);
 
+    
     const loadProducts = (currentPage, searchText = '') => {
         setLoading(true);
         getAllProduct(currentPage, 12, searchText)

@@ -25,14 +25,40 @@
     margin-bottom: 30px;
 }
 
-.yes_No{
+.yes_No {
     color: #ffffff !important;
-    border: 2px solid #10a562 !important;
-    padding: 13px 30px !important;
-    background-color: transparent;
+    border: none !important;
+    outline: none !important;
+    padding: 15.5px 30px !important;
+    margin-right: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
     font-size: 20px !important;
     border-radius: 8px !important;
     width: 204px !important;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    padding-left: 6px !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+}
+
+.yes_No option:hover{
+    background-color: #10a562 !important;
+}
+
+.yes_No:hover, .yes_No:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.yes_No option {
+    background-color: #3d4a5c;
+    color: #ffffff;
 }
 
 .ok_b {

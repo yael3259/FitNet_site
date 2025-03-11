@@ -1,73 +1,50 @@
 import "./Update_Order.css";
-import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import { getOrderById, updateOrder } from './orderApi';
+import { useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import { updateOrder } from './orderApi';
 
 
 
 export function UpdateOrder() {
-    const [order, setOrder] = useState(null);
     const { orderId } = useParams();
     const [isSent, setIsSent] = useState("");
+    const navigate = useNavigate();
 
 
-    const handleInputChange = (e) => {
-        setIsSent(e.target.value);
+    const handleSelectChange = (e) => {
+        const value = e.target.value;
+        if (value === "yes") setIsSent(true);
+        else if (value === "no") setIsSent(false);
+        else setIsSent("");
     };
 
     const updateSubmit = async (e) => {
         e.preventDefault();
+        if (isSent === "") {
+            alert("Please select Yes or No.");
+            return;
+        }
+
         try {
-            if (!isSent) {
-                alert("Please provide a valid status (Yes or No).");
-                return;
-            }
-            console.log(isSent);
-            const res = await updateOrder(isSent);
-            
-            // setOrder(res.data);
+            await updateOrder(orderId, { isSent });
             alert("The order status has been successfully updated.");
+            navigate("/showOrders");
         } catch (err) {
             alert("Failed to update the order.");
             console.error(err);
         }
     };
-    // =======================================================
-    // const updateSubmit = async (data) => {
-    //     // if (data == "yes")
-    //     //     data == true;
-    //     // if (data == "no")
-    //     //     data == false;
-    //     try {
-    //         console.log(data)
-    //         let res = await updateOrder({
-    //             if (data == "yes")
-    //                 isSent == true;
-    //             if (data == "no")
-    //                 isSent == false;
-    //         });
-    //         alert("This product has been successfully edited");
-    //         console.log(res);
-    //     } catch (err) {
-    //         alert("cannot edit this product");
-    //         console.log(err);
-    //     }
-    // };
 
     return (
         <div className="update_order_form">
             <form onSubmit={updateSubmit} className="bodyUpdateOrder">
                 <p className="sent">Has the order been confirmed for delivery?</p>
-                <input
-                    type="text"
-                    className="yes_No"
-                    placeholder="Enter Yes or No"
-                    value={isSent}
-                    onChange={handleInputChange}
-                />
-                <button type="submit" className="ok_b">
-                    UPDATE
-                </button>
+                <select className="yes_No" value={isSent === "" ? "" : isSent ? "yes" : "no"} onChange={handleSelectChange}>
+                    <option value="" disabled hidden>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <button type="submit" className="ok_b">UPDATE</button>
             </form>
         </div>
     );

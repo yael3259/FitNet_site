@@ -22,29 +22,68 @@ export const Contact = () => {
     setter(false);
   };
 
-  const handleSubmit = (event) => {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   if (!fullname || !email || !message) {
+  //     setErrorMessage("Please fill out all fields");
+  //     setSuccessMessage('');
+  //     return;
+  //   }
+
+  //   if (!validateEmail(email)) {
+  //     setErrorMessage("Please enter a valid email address");
+  //     setSuccessMessage('');
+  //     return;
+  //   }
+
+  //   // מימוש פונקציית שליחת האימייל
+
+  //   setErrorMessage('');
+  //   setSuccessMessage('');
+
+  //   setSuccessMessage('Your message has been successfully sent!');
+  //   setFullname('');
+  //   setEmail('');
+  //   setMessage('');
+  // };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (!fullname || !email || !message) {
-      setErrorMessage("Please fill out all fields.");
+      setErrorMessage("Please fill out all fields");
       setSuccessMessage('');
       return;
     }
-
+  
     if (!validateEmail(email)) {
-      setErrorMessage("Please enter a valid email address.");
+      setErrorMessage("Please enter a valid email address");
       setSuccessMessage('');
       return;
     }
-
-    setErrorMessage('');
-    setSuccessMessage('');
-
-    setSuccessMessage('Your message has been successfully sent!');
-    setFullname('');
-    setEmail('');
-    setMessage('');
+  
+    try {
+      const response = await fetch("http://localhost:5000/domain/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullname, email, message }),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        setSuccessMessage(data.message);
+        setFullname('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setErrorMessage(data.error || "Something went wrong");
+      }
+    } catch (error) {
+      setErrorMessage("Failed to send message");
+    }
   };
+  
 
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -54,8 +93,8 @@ export const Contact = () => {
   return (
     <div className="contact_page">
       <div className="container_con">
-        <div className="cf" onSubmit={handleSubmit}>
-          <p className="title_con">Send us a massage</p>
+        <form className="cf" onSubmit={handleSubmit}>
+          <p className="title_con">Send us a message</p>
           <label htmlFor="fullname" className="con_details1"></label>
           <input
             type="text"
@@ -91,31 +130,26 @@ export const Contact = () => {
             onChange={(e) => setMessage(e.target.value)}
             onFocus={handleFocus(setIsMessageFocused)}
             onBlur={handleBlur(setIsMessageFocused)}
-            className={isMessageFocused ? "focused" : ""}
-          ></textarea>
+            className={isMessageFocused ? "focused" : ""}>
+          </textarea>
 
-          {/* <div className="con_container">
-            <input type="submit" value="submit" />
-          </div> */}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {successMessage && <p className="success-message">{successMessage}</p>}
+
           <div className="con_container">
             <button type="submit" className="submit-button">
               <i className="fas fa-paper-plane"></i>
             </button>
           </div>
-
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {successMessage && <p className="success-message">{successMessage}</p>}
-        </div>
+        </form>
       </div>
 
-
-      <div class="con_details">
+      <div className="con_details">
         <p className="con_tytle">CONTACT US</p>
-        <h1><i class="fas fa-phone icon"></i>Call us <span class="s">(+972) 52-760-7424</span></h1>
-        <h1><i class="fas fa-map-marker-alt icon"></i>Our location <span class="s">Yehuda HaNasi, El'ad, Israel</span></h1>
-        <h1><i class="fas fa-envelope icon"></i>Email <span class="s">yael3259@gmail.com</span></h1>
+        <h1><i className="fas fa-phone icon"></i>Call us <span className="s">(+972) 52-760-7424</span></h1>
+        <h1><i className="fas fa-map-marker-alt icon"></i>Our location <span className="s">Yehuda HaNasi, El'ad, Israel</span></h1>
+        <h1><i className="fas fa-envelope icon"></i>Email <span className="s">yael3259@gmail.com</span></h1>
       </div>
-
     </div>
   );
 };

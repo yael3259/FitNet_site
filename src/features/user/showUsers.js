@@ -23,7 +23,7 @@ export const ShowAllUsers = () => {
     const handleDelete = async (userID) => {
         try {
             await deleteUser(userID);
-            alert("User deleted successfully");
+            console.log("User deleted successfully");
             fetchAllUsers();
         } catch (err) {
             console.error("Failed to delete user:", err.response?.data || err.message);

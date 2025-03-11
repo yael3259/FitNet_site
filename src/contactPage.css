@@ -84,13 +84,18 @@ input[type="submit"]:hover {
 }
 
 .error-message {
-    color: red;
+    color: rgb(185, 19, 19);
     font-size: 14px;
+    padding-bottom: -20px !important;
+    margin-bottom: -2px !important;
+    padding-right: 30px !important;
 }
 
 .success-message {
-    color: green;
-    font-size: 14px;
+    color: rgb(3, 154, 3) !important;
+    font-size: 15px !important;
+    padding-right: 30px !important;
+    margin-bottom: -2px !important;
 }
 
 .con_tytle {

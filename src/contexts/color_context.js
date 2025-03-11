@@ -61,14 +61,41 @@
 //   );
 // };
 
-import React, { createContext, useState } from 'react';
 
-export const Context = createContext({
+// import React, { createContext, useState } from "react";
+
+
+// // color function
+// export const color_context = createContext({
+//   color: '#ffffff',
+//   theFunc: () => {},
+// });
+
+// export const MyProvider = ({ children, userDeatails }) => {
+//   const [color, setColor] = useState('#ffffff');
+
+//   const updateColor = (newColor) => {
+//     setColor(newColor);
+//   };
+
+//   return (
+//     <color_context.Provider value={{ color, updateColor, userDeatails }}>
+//       {children}
+//     </color_context.Provider>
+//   );
+// };
+
+
+import React, { createContext, useState } from "react";
+
+
+// color function
+export const ColorContext = createContext({
   color: '#ffffff',
   theFunc: () => {},
 });
 
-export const MyProvider = ({ children, userDeatails }) => {
+export const MyProvider = ({ children }) => {
   const [color, setColor] = useState('#ffffff');
 
   const updateColor = (newColor) => {
@@ -76,8 +103,8 @@ export const MyProvider = ({ children, userDeatails }) => {
   };
 
   return (
-    <Context.Provider value={{ color, updateColor, userDeatails }}>
+    <ColorContext.Provider value={{ color, updateColor }}>
       {children}
-    </Context.Provider>
+    </ColorContext.Provider>
   );
 };

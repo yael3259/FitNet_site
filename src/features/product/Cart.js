@@ -2,6 +2,7 @@ import { useState, useEffect, React } from "react";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AddOrder } from "../order/orderApi";
+import { useUserContext } from "../../contexts/user_context";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { Canvas } from "@react-three/fiber";
@@ -15,8 +16,16 @@ export const CartShopping = () => {
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const [couponMessage, setCouponMessage] = useState("");
     const storedUserID = localStorage.getItem("userId");
+    const [isCartEmpty, setIsCartEmpty] = useState(false);
     const [notification, setNotification] = useState("");
 
+
+    // פונקציה ליצירת תאריך לעוד שבוע מהיום
+    const defaultDate = () => {
+        const today = new Date();
+        const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+        return nextWeek;
+    }
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm({
         defaultValues: {
@@ -25,7 +34,7 @@ export const CartShopping = () => {
             cvv: "",
             cuponCode: "",
             address: "",
-            targetDate: ""
+            targetDate: defaultDate
         }
     });
 
@@ -33,8 +42,14 @@ export const CartShopping = () => {
         const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
         setCartItems(storedCartItems);
 
-        const total = storedCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        setTotalAmount(total);
+        if (storedCartItems.length > 0) {
+            const total = storedCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            setTotalAmount(total);
+            setIsCartEmpty(false);
+        } else {
+            setTotalAmount(0);
+            setIsCartEmpty(true);
+        }
     }, []);
 
     const Model = ({ url }) => {
@@ -116,10 +131,10 @@ export const CartShopping = () => {
 
         setNotification(
             <div className="notification-content">
-              <p><span>{itemToRemove.name}</span>
-              has been removed from your cart</p>
+                <p><span>{itemToRemove.name}</span>
+                    has been removed from your cart</p>
             </div>
-          );          
+        );
 
         setTimeout(() => {
             setNotification("");
@@ -177,6 +192,8 @@ export const CartShopping = () => {
                 </NavLink>
             </div>
 
+            {isCartEmpty && <p className="emptyCart">Your cart is empty</p>}
+
             <div className="cart-container">
                 <div className="items">
                     {cartItems.map((item, index) => (
@@ -185,6 +202,7 @@ export const CartShopping = () => {
                             <div className="text-container">
                                 <p className="name">{item.name} <span id="q">x {item.quantity}</span></p>
                                 <p className="price_item">$ {item.price}</p>
+                                <div className="color_choosed" style={{ backgroundColor: item.color }}></div>
                                 <p className="total_price">$ {(item.price * item.quantity).toFixed(2)}</p>
                             </div>
                             <button
@@ -221,7 +239,9 @@ export const CartShopping = () => {
                                 {...register("address", { required: "Address is required" })} />
                             {errors.address && <p className="error">{errors.address.message}</p>}
 
-                            <input type="date" placeholder="Target Date" {...register("targetDate", { required: "Target date is required" })} />
+                            <input type="date" placeholder="Target Date" 
+                            {...register("targetDate")} 
+                            />
                         </div>
 
                         <button type="submit" className="pay-button">Pay Now</button>
@@ -242,3 +262,10 @@ export const CartShopping = () => {
         </div>
     );
 };
+
+
+
+
+
+
+

@@ -37,6 +37,11 @@
     border-radius:50%;
 }
 
+#urlPic:hover {
+    transform: scale(1.5);
+    transition: transform 0.3s ease;
+}
+
 .user-card.admin-user {
     background-color: #f9ffc4;
 }

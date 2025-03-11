@@ -100,10 +100,10 @@ export function UpdateProductForm() {
                             <br></br><br></br>
 
                             <div className="label-container">
-                                <label htmlFor="image" className="label transition-element">Image</label>
-                                <input type="file" id="image" className="transparent-input transition-element" placeholder={"./files/pic.webp"} {...register('image')} />
+                                <label htmlFor="image" className="label transition-element">Image URL</label>
+                                <input type="url" id="urlImage" className="transparent-input transition-element" {...register('urlImage')} />
                             </div>
-                            
+
                             {/* <div>
                                 <img src="https://www.misgeret.co.il/wht_Images/catalog/subject/image_content_597.jpg.webp"/>
                             </div> */}

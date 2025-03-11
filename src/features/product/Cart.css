@@ -41,6 +41,13 @@
     color: rgb(161, 161, 161);
 }
 
+.emptyCart{
+    position: absolute;
+    left: 140px;
+    color: #ffffff82;
+    font-size: 25px;
+}
+
 .item {
     background-color: #27333b;
     border-radius: 6px;
@@ -199,8 +206,8 @@
 }
 
 .color_choosed {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     display: inline-block;
     margin-left: 0px;
@@ -253,7 +260,7 @@
 }
 
 .close-btn:hover {
-    color: #ff0000;
+    color: #831f1f;
 }
 
 span {

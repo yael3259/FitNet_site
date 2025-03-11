@@ -7,42 +7,23 @@ import './AddProduct.css';
 export function AddProductForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    // const onSubmit = async (data) => {
-    //     console.log(data);
-
-    //     try {
-    //         let res = await addProduct(data);
-    //         alert("This product has been successfully added");
-    //         console.log(res);
-    //     }
-    //     catch (err) {
-    //         alert("cannot add this product");
-    //         console.log(err);
-    //     }
-    // }
     const onSubmit = async (data) => {
         console.log(data);
 
-        const formData = new FormData();
-        Object.entries(data).forEach(([key, value]) => {
-            formData.append(key, value);
-        });
-
         try {
-            let res = await addProduct(formData);
+            let res = await addProduct(data);
             alert("This product has been successfully added");
             console.log(res);
         }
         catch (err) {
-            alert("Cannot add this product");
+            alert("cannot add this product");
             console.log(err);
         }
-    };
+    }
 
 
     return (
-        // <form onSubmit={handleSubmit(onSubmit)} className="addForm">
-        <form onSubmit={handleSubmit(onSubmit)} className="addForm" encType="multipart/form-data">
+        <form onSubmit={handleSubmit(onSubmit)} className="addForm">
             <div className="add_body1">
                 <div className="bb">
                     <p className="p" id="addPtytle">ADD PRODUCT</p><br></br>
@@ -83,19 +64,18 @@ export function AddProductForm() {
                     </div>
                     <br></br><br></br>
 
-                        <div className="label-container">
-                            <label htmlFor="image" className="label transition-element">Image URL</label>
-                            <input type="url" id="urlImage" className="transparent-input transition-element" {...register('urlImage')} />
-                        </div>
-                        <br></br><br></br>
+                    <div className="label-container">
+                        <label htmlFor="image" className="label transition-element">Image URL</label>
+                        <input type="url" id="urlImage" className="transparent-input transition-element" {...register('urlImage')} />
+                    </div>
+                    <br></br><br></br>
 
-                        <div className="label-container">
-                            <label htmlFor="file" className="label transition-element">Upload Image</label>
-                            <input type="file" id="fileImage" className="transparent-input transition-element"
-                                {...register('image', { required: 'Image is required' })} />
-                        </div>
-                        {errors.image && <span>{errors.image.message}</span>}
-                        <br></br><br></br>
+                    {/* <div className="label-container">
+                        <label htmlFor="file" className="label transition-element">Upload Image</label>
+                        <input type="file" id="fileImage" className="transparent-input transition-element"
+                            {...register('image')} />
+                    </div>
+                    <br></br><br></br> */}
 
                     <button type="submit" className="submit_addPage">Submit</button>
                 </div>

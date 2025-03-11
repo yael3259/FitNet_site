@@ -1,4 +1,4 @@
-import { getAllorders } from "./orderApi";
+import { getAllorders, deleteOrder } from "./orderApi";
 import { useState, useEffect } from "react";
 import { FaEdit, FaShippingFast } from 'react-icons/fa';
 import "./showOrders.css";
@@ -22,6 +22,17 @@ export const ShowAllOrders = () => {
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            const res = await deleteOrder(id);
+            console.log("this order successfully deleted", res);
+            fetchAllOrders();
+
+        } catch (err) {
+            console.error("Failed to delete user:", err.response?.data || err.message);
+        }
+    }
+
     useEffect(() => {
         fetchAllOrders();
     }, [page]);
@@ -38,11 +49,11 @@ export const ShowAllOrders = () => {
             <div className="orders-grid">
                 {orders.map((order, index) => (
                     <div key={index} className="order-card">
-                        <button className="deleteOrder_button">delete order</button>
+                        <button className="deleteOrder_button" onClick={() => handleDelete(order._id)}>delete order</button>
                         <h3>Order ID: {order._id}</h3>
                         <div className="orderD">
-                        <p><strong>User ID:</strong> {storedUserID}</p>
-                        <p><strong>Address:</strong> {order.address}</p>
+                            <p><strong>User ID:</strong> {storedUserID}</p>
+                            <p><strong>Address:</strong> {order.address}</p>
                             <p><strong>Target Date:</strong> {formatDate(order.targetDate)}</p>
                             <p><strong>Status:</strong> {order.isSent ? "Sent" : "Pending"}</p>
                         </div>

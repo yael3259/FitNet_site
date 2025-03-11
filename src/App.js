@@ -8,13 +8,13 @@ import { ShowAllOrders } from './features/order/showOrders';
 import { useState } from 'react';
 import { ResetPassword } from './features/user/forgotPassword';
 import List from './features/product/List';
-import { addProduct, updateProduct } from './features/product/productApi';
 import { AddProductForm } from './features/product/AddProduct';
 import { UpdateProductForm } from './features/product/UpdateProduct';
 import { DeleteProductForm } from './features/product/DeleteProduct';
 import { Details } from './features/product/Details';
 import { NavBar } from './NavBar';
-import { Context } from "./contexts";
+import { ColorContext } from "./contexts/color_context";
+import { UserProvider } from "./contexts/user_context";
 import { Contact } from './contactPage';
 import { CartShopping } from './features/product/Cart';
 import { Update } from './Update';
@@ -34,9 +34,11 @@ function App() {
 
   return (
     <div className="app">
-      <Context.Provider value={{ theColor: selectC, theFunc: cangeColor }}>
+      <UserProvider>
+      <ColorContext.Provider value={{ theColor: selectC, theFunc: cangeColor }}>
         <NavBar />
-      </Context.Provider>
+      </ColorContext.Provider>
+  
 
       <Routes>
         <Route path='' element={<List />} />
@@ -56,9 +58,9 @@ function App() {
         <Route path='contact' element={<Contact />} />
         <Route path='cart' element={<CartShopping />} />
       </Routes>
+      </UserProvider>
     </div>
   );
 }
 
 export default App;
-
