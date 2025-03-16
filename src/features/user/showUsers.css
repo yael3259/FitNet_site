@@ -115,3 +115,9 @@
     font-size: 16px;
     color: green;
 }
+
+@media (max-width: 376px) {
+    .userTytle{
+        margin-top: 130px;
+    }
+}

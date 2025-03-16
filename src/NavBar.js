@@ -21,6 +21,7 @@ export const NavBar = () => {
     let add = "https://cdn-icons-png.freepik.com/256/10969/10969590.png?ga=GA1.1.394280285.1712833522";
     let update = "https://cdn-icons-png.freepik.com/256/6769/6769612.png?ga=GA1.1.394280285.1712833522&semt=ais_hybrid";
     let deleteIcon = "https://cdn-icons-png.freepik.com/256/10969/10969305.png?ga=GA1.1.394280285.1712833522";
+    let defaultImage = "https://cdn-icons-png.freepik.com/256/12259/12259393.png";
     let adminIcon = "https://cdn-icons-png.freepik.com/128/8839/8839165.png";
 
 
@@ -56,11 +57,13 @@ export const NavBar = () => {
                     to="/login"
                     className={`overlay-navbar ${activeLink === "login" ? "active-link" : ""}`} id="userLink"
                     onClick={() => handleLinkClick("login")}
-                    style={{ color: color.color }}
-                >
-                    {/* {userName || "GUEST"} */}
+                    style={{ color: color.color }}>
                     {user ? `${user.userName}` : "GUEST"}
-                    <img src={user.url} width={25} height={25} id="urlPicUser" style={{ position: 'relative', top: '6.5px', left: '8px' }} onError={() => setUrl("https://cdn-icons-png.freepik.com/256/12259/12259393.png")} alt="" />
+                    
+                    {user.url? 
+                    <img src={user.url} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser"/>
+                    : <img src={defaultImage} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
+                    }
                 </NavLink>
 
                 <NavLink

@@ -1,6 +1,9 @@
 import { getAllorders, deleteOrder } from "./orderApi";
 import { useState, useEffect } from "react";
 import { FaEdit, FaShippingFast } from 'react-icons/fa';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import "./showOrders.css";
 import { Link } from "react-router-dom";
 
@@ -25,11 +28,13 @@ export const ShowAllOrders = () => {
     const handleDelete = async (id) => {
         try {
             const res = await deleteOrder(id);
+            successAlert("this order successfully deleted");
             console.log("this order successfully deleted", res);
             fetchAllOrders();
 
         } catch (err) {
-            console.error("Failed to delete user:", err.response?.data || err.message);
+            faildAlert("Failed to delete this order")
+            console.error("Failed to delete this order:", err.response?.data || err.message);
         }
     }
 
@@ -77,6 +82,7 @@ export const ShowAllOrders = () => {
                 <button onClick={() => setPage(page > 1 ? page - 1 : 1)}>Previous</button>
                 <button onClick={() => setPage(page + 1)}>Next</button>
             </div>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 };

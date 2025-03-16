@@ -2,6 +2,9 @@ import "./Update_Order.css";
 import { useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { updateOrder } from './orderApi';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 
 
 
@@ -21,16 +24,16 @@ export function UpdateOrder() {
     const updateSubmit = async (e) => {
         e.preventDefault();
         if (isSent === "") {
-            alert("Please select Yes or No.");
+            warningAlert("Please select Yes or No.");
             return;
         }
 
         try {
             await updateOrder(orderId, { isSent });
-            alert("The order status has been successfully updated.");
+            successAlert("The order status has been successfully updated.");
             navigate("/showOrders");
         } catch (err) {
-            alert("Failed to update the order.");
+            faildAlert("Failed to update the order.");
             console.error(err);
         }
     };
@@ -46,6 +49,7 @@ export function UpdateOrder() {
                 </select>
                 <button type="submit" className="ok_b">UPDATE</button>
             </form>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 }

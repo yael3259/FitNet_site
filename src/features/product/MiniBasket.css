@@ -173,6 +173,26 @@
 
     .item-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
 
+@media (max-width: 376px) {
+    .basket {
+        position: fixed;
+        top: 20%;
+        left: -4.5%;
+        width: 90%;
+        background-color: #acffbf;
+        z-index: 9999;
+    }
+
+    .basket:hover {
+        border: solid 2px #4bff75;
+    }
+
+    .cart-button:hover {
+        background-color: #d2d2d2;
+        border: 2px solid #ffffff;
+        color: rgb(255, 255, 255);
     }
 }

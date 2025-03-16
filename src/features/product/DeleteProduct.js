@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { getProductById, deleteProduct } from './productApi';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import './DeleteProduct.css';
 
 
@@ -23,7 +26,7 @@ export function DeleteProductForm() {
 
         } catch (error) {
             console.error('Error fetching product:', error);
-            alert("There is no product with such a code");
+            faildAlert("There is no product with such a code");
         }
     };
 
@@ -31,11 +34,11 @@ export function DeleteProductForm() {
     const onDeleteSubmit = async () => {
         try {
             let res = await deleteProduct(productId);
-            alert("This product has been successfully deleted");
+            successAlert("This product has been successfully deleted");
             console.log(res);
 
         } catch (err) {
-            alert("cannot delete this product");
+            faildAlert("Could not delete this product");
             console.log(err);
         }
     };
@@ -67,6 +70,7 @@ export function DeleteProductForm() {
                     </form>
                 )}
             </div>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 }

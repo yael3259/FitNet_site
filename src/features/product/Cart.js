@@ -2,7 +2,9 @@ import { useState, useEffect, React } from "react";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AddOrder } from "../order/orderApi";
-import { useUserContext } from "../../contexts/user_context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { Canvas } from "@react-three/fiber";
@@ -92,9 +94,14 @@ export const CartShopping = () => {
 
     const handlePayment = async (data) => {
         if (data.cardNumber && data.expiryDate && data.cvv && data.address && data.targetDate) {
+
+            if (cartItems.length === 0) {
+                warningAlert("There are no products in your cart.\nAt least one product is required.");
+                return;
+            }
             try {
                 if (!storedUserID) {
-                    alert("User is not logged in.");
+                    faildAlert("User is not logged in");
                     return;
                 }
                 console.log(storedUserID);
@@ -119,7 +126,7 @@ export const CartShopping = () => {
                 }, 3000);
             } catch (err) {
                 console.error("Payment failed:", err);
-                alert("Payment failed. Please try again.");
+                faildAlert("Payment failed. Please try again");
             }
         }
     };
@@ -158,7 +165,7 @@ export const CartShopping = () => {
                     finalSum *= 0.85; // 15%
                     successMessage = "Discount applied: 15% off";
                 } else {
-                    alert("Purchase amount less than $80");
+                    faildAlert("Purchase amount less than $80");
                     return;
                 }
                 break;
@@ -167,7 +174,7 @@ export const CartShopping = () => {
                 successMessage = "Discount applied: 2% off";
                 break;
             default:
-                alert("Invalid coupon code");
+                faildAlert("Invalid coupon code");
                 return;
         }
         setTotalAmount(parseFloat(finalSum.toFixed(2)));
@@ -239,8 +246,8 @@ export const CartShopping = () => {
                                 {...register("address", { required: "Address is required" })} />
                             {errors.address && <p className="error">{errors.address.message}</p>}
 
-                            <input type="date" placeholder="Target Date" 
-                            {...register("targetDate")} 
+                            <input type="date" placeholder="Target Date"
+                                {...register("targetDate")}
                             />
                         </div>
 
@@ -259,13 +266,7 @@ export const CartShopping = () => {
                     <Model url="\models\model.glb" rotation={[0, 0, 0]} />
                 </Canvas>
             </div>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 };
-
-
-
-
-
-
-

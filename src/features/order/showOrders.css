@@ -14,11 +14,11 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-h4{
+h4 {
     color: rgb(255, 209, 135);
 }
 
-#sp{
+#sp {
     color: rgb(255, 186, 75);
 }
 
@@ -68,7 +68,7 @@ h4{
     cursor: pointer;
 }
 
-.deleteOrder_button:hover{
+.deleteOrder_button:hover {
     background-color: #000000 !important;
 }
 
@@ -148,5 +148,27 @@ h4{
 @media (max-width: 768px) {
     .orders-container {
         margin-top: 104px;
+    }
+
+    .order-card {
+        border: 1px solid rgb(187, 187, 187);
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 376px) {
+    .orders-container {
+        margin-top: 100px;
+    }
+
+    .orders-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+        gap: 30px;
+    }
+
+    .order-card {
+        border: 1px solid rgb(187, 187, 187);
+        border-radius: 8px;
     }
 }

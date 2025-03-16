@@ -19,7 +19,6 @@
     font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
-    /* font-weight: lighter; */
     letter-spacing: 1px;
     margin-bottom: -10px;
 }
@@ -306,4 +305,22 @@ span {
         order: 1;
         width: 100%;
     }
+}
+
+@media (max-width: 768px) {
+    .all{
+        margin-top: 20px;
+    }
+    .back_to_list{
+        visibility: hidden;
+    }
+
+    .txt{
+        font-size: 25px;
+    }
+
+    .model-container {
+        transform: scale(0.6);
+    }
+    
 }

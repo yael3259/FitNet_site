@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import { addUser } from './userApi';
-import { NavBar } from '../../NavBar';
 import './sign_in.css';
+import { FaUser, FaLock, FaEnvelope, FaLink } from 'react-icons/fa';
 
 
 
@@ -13,8 +16,8 @@ export const RegistrationPage = () => {
     const [url, setUrl] = useState('');
     const [userRole, setUserRole] = useState('');
     const [loading, setLoading] = useState(false);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -34,10 +37,31 @@ export const RegistrationPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!userName || !password || !email) {
-            alert("Please fill all the fields");
+
+        const validationErrors = {};
+
+        if (!userName || userName.length < 3) {
+            validationErrors.userName = "Username must be at least 3 characters long.";
+        }
+
+        if (!password || password.length < 5) {
+            validationErrors.password = "Password must be at least 5 characters long.";
+        }
+
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!email || !emailPattern.test(email)) {
+            validationErrors.email = "Please enter a valid email address.";
+        }
+
+        if (url && !/^https?:\/\/[^\s]+$/.test(url)) {
+            validationErrors.url = "Please enter a valid URL.";
+        }
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
             return;
         }
+
         setLoading(true);
 
         const data = { email, password, userName, url };
@@ -45,17 +69,15 @@ export const RegistrationPage = () => {
 
         try {
             const res = await addUser(data);
-            // localStorage.setItem("url", res.data.url);
-            // console.log("URL:", localStorage.getItem("url"));
 
-            alert("You signed up successfully!");
+            successAlert("You signed up successfully!");
             console.log("Response from server:", res);
 
             setUserRole(res.data.role);
 
             navigate("/login");
         } catch (err) {
-            alert(err.response?.data?.message || "An error occurred. Please try again.");
+            faildAlert(err.response?.data?.message || "An error occurred. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -63,40 +85,56 @@ export const RegistrationPage = () => {
 
     return (
         <div className="registration-container">
-            {/* <NavBar userRole={userRole} /> */}
             <form className="registration-form" onSubmit={handleSubmit}>
                 <h2>Sign up</h2>
-                <input
-                    type="text"
-                    name="userName"
-                    placeholder="User name"
-                    value={userName}
-                    onChange={handleUsernameChange}
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    required
-                />
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={handleEmailChange}
-                    required
-                />
-                <input
-                    type="url"
-                    name="url"
-                    placeholder="picture (optional)"
-                    value={url}
-                    onChange={handleUrlChange}
-                />
+
+                <div className="input-container">
+                    <input
+                        type="text"
+                        name="userName"
+                        placeholder="User name"
+                        value={userName}
+                        onChange={handleUsernameChange}
+                    />
+                    <FaUser className="input-icon" />
+                </div>
+                {errors.userName && <p className="error">{errors.userName}</p>}
+
+                <div className="input-container">
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                    />
+                    <FaLock className="input-icon" />
+                </div>
+                {errors.password && <p className="error">{errors.password}</p>}
+
+                <div className="input-container">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={handleEmailChange}
+                    />
+                    <FaEnvelope className="input-icon" />
+                </div>
+                {errors.email && <p className="error">{errors.email}</p>}
+
+                <div className="input-container">
+                    <input
+                        type="url"
+                        name="url"
+                        placeholder="picture (optional)"
+                        value={url}
+                        onChange={handleUrlChange}
+                    />
+                    <FaLink className="input-icon" />
+                </div>
+                {errors.url && <p className="error">{errors.url}</p>}
 
                 <button type="submit" disabled={loading}>
                     {loading ? (
@@ -110,6 +148,7 @@ export const RegistrationPage = () => {
                     Back to login
                 </NavLink>
             </form>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 };

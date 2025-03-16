@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { getProductById, updateProduct } from './productApi';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import './UpdateProduct.css';
 
 
@@ -18,17 +21,17 @@ export function UpdateProductForm() {
             setProduct(res.data);
         } catch (error) {
             console.error('Error fetching product:', error);
-            alert("There is no product with such a code");
+            faildAlert("There is no product with such a code");
         }
     };
 
     const onUpdateSubmit = async (data) => {
         try {
             let res = await updateProduct(data);
-            alert("This product has been successfully edited");
+            successAlert("This product has been successfully edited");
             console.log(res);
         } catch (err) {
-            alert("cannot edit this product");
+            faildAlert("Could not edit this product");
             console.log(err);
         }
     };
@@ -114,6 +117,7 @@ export function UpdateProductForm() {
                     </form>
                 )}
             </div>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 }

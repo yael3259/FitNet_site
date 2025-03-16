@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { getAllUsers, deleteUser } from "./userApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import "./showUsers.css";
 
 
@@ -23,9 +26,10 @@ export const ShowAllUsers = () => {
     const handleDelete = async (userID) => {
         try {
             await deleteUser(userID);
-            console.log("User deleted successfully");
+            successAlert("User deleted successfully");
             fetchAllUsers();
         } catch (err) {
+            faildAlert("Failed to delete user")
             console.error("Failed to delete user:", err.response?.data || err.message);
         }
     };
@@ -47,7 +51,7 @@ export const ShowAllUsers = () => {
             <div className="users-grid">
                 {arr.map((user) => (
                     <div className={`user-card ${user.role === "ADMIN" ? "admin-user" : ""}`} key={user._id}>
-                        <img src= {user.url || "https://cdn-icons-png.freepik.com/256/12259/12259393.png?ga=GA1.1.394280285.1712833522&"} width={25} height={25} id="urlPic" />
+                        <img src={user.url || "https://cdn-icons-png.freepik.com/256/12259/12259393.png?ga=GA1.1.394280285.1712833522&"} width={25} height={25} id="urlPic" />
                         <p><strong>User Name: </strong>{user.userName}</p>
                         <p><strong>ID: </strong>{user._id}</p>
                         <p><strong>Email: </strong>{user.email}</p>
@@ -71,6 +75,7 @@ export const ShowAllUsers = () => {
                     </div>
                 </div>
             )}
+            <ToastContainer position="bottom-center" />
         </div>
     );
 };

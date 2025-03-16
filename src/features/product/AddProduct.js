@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form";
 import { addProduct } from "./productApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import './AddProduct.css';
 
 
@@ -12,11 +15,11 @@ export function AddProductForm() {
 
         try {
             let res = await addProduct(data);
-            alert("This product has been successfully added");
+            successAlert("This product has been successfully added");
             console.log(res);
         }
         catch (err) {
-            alert("cannot add this product");
+            faildAlert("Could not add this product");
             console.log(err);
         }
     }
@@ -80,6 +83,7 @@ export function AddProductForm() {
                     <button type="submit" className="submit_addPage">Submit</button>
                 </div>
             </div>
+            <ToastContainer position="bottom-center" />
         </form >
     );
 }

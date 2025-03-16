@@ -85,7 +85,7 @@
     margin-left: -2px;
 }
 
-.qty-control_minus{
+.qty-control_minus {
     background-color: #6cfc4c;
     border: 1px solid #000000;
     border-radius: 50%;
@@ -348,8 +348,17 @@
         margin: auto;
     }
 
-    .d1,
-    d2 {
+    .d1, .d2 {
         text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .d {
+        text-align: center;
+    }
+
+    .img_detail{
+        margin-top: 70px;
     }
 }

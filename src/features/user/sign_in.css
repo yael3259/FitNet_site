@@ -1,9 +1,3 @@
-body {
-    background-color: #1e272e;
-    font-family: Arial, sans-serif;
-    color: #fff;
-}
-
 .registration-form h2 {
     color: #fff;
     margin-bottom: 40px;
@@ -11,6 +5,11 @@ body {
 }
 
 .registration-container {
+    background-color: #1e272e;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,8 +29,28 @@ body {
     margin-bottom: 40px;
 }
 
+.input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
 .registration-form input {
     box-sizing: border-box;
+}
+
+.error {
+    margin-top: 0;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
 }
 
 .registration-form input[type="text"],
@@ -39,8 +58,9 @@ body {
 .registration-form input[type="email"],
 .registration-form input[type="url"] {
     width: 100%;
-    margin: 10px auto;
+    margin: 10px 0;
     padding: 15px;
+    padding-right: 30px;
     border: none;
     border-radius: 5px;
     background-color: #b0c2d0;
@@ -100,5 +120,11 @@ body {
 @media (max-width: 768px) {
     .registration-form {
         margin-top: 150px;
+    }
+}
+
+@media (max-width: 376px) {
+    .registration-container {
+        padding: 20px;
     }
 }

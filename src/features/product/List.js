@@ -6,7 +6,10 @@ import { MiniBasket } from "./MiniBasket";
 import { Link } from 'react-router-dom';
 import F from './files/F.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCheck, faCopy, faL } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 
 
 
@@ -20,7 +23,7 @@ const List = () => {
     const [hoveredImage, setHoveredImage] = useState(null); // תמונה ממוסכת
     const [showMiniBasket, setShowMiniBasket] = useState(false); // האם להציג סל מוקט
     const [closeTimeout, setCloseTimeout] = useState(null); // זמן סגירת סל מוקטן
-    const [copiedCode, setCopiedCode] = useState(null); // קופונ הנחה
+    const [copiedCode, setCopiedCode] = useState(null); // קופון הנחה
 
     useEffect(() => {
         loadProducts(page, searchText);
@@ -34,7 +37,7 @@ const List = () => {
         }
     }, [cartItems]);
 
-    
+
     const loadProducts = (currentPage, searchText = '') => {
         setLoading(true);
         getAllProduct(currentPage, 12, searchText)
@@ -100,6 +103,7 @@ const List = () => {
         navigator.clipboard.writeText(code).then(() => {
             setCopiedCode(code);
         }).catch((err) => {
+            faildAlert("Could not copy code cupon")
             console.error('Error copying to clipboard: ', err);
         });
     };
@@ -124,13 +128,15 @@ const List = () => {
                 <p className='offer'><img src='https://cdn-icons-png.freepik.com/256/12957/12957298.png?semt=ais_hybrid'
                     height={45}
                     width={45}
-                    style={{ position: 'relative', top: '6.5px', right: "10px" }} />
+                    style={{ position: 'relative', top: '6.5px', right: "10px" }}
+                    id='fire_icon' />
                     Special Offer Just For You
                     <img src='https://cdn-icons-png.freepik.com/256/12957/12957298.png?semt=ais_hybrid'
                         height={45}
                         width={45}
-                        style={{ position: 'relative', top: '6.5px', left: "10px" }} /></p>
-                        
+                        style={{ position: 'relative', top: '6.5px', left: "10px" }} 
+                        id='fire_icon'/></p>
+
                 <div className="coupon-container">
                     <div className="coupon">
                         <p className='lab'>Get 10% off for the holiday</p>
@@ -209,6 +215,7 @@ const List = () => {
                     {loading ? <div className="spinner"></div> : "Load More"}
                 </button>
             </div>
+            <ToastContainer position="bottom-center" />
         </>
     );
 };

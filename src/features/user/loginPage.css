@@ -110,3 +110,18 @@ body {
       margin-top: 30px;
   }
 }
+
+@media (max-width: 376px) {
+  .login-container{
+    padding: 20px;
+  }
+
+  .reg{
+    margin-top: 20px;
+  }
+
+  #reg1{
+    margin-left: 0;
+    margin-top: 0;
+  }
+}

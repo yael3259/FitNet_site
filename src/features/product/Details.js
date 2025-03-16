@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
 import { MiniBasket } from './MiniBasket';
 import './Details.css';
 import { useLocation } from 'react-router-dom';
@@ -34,7 +37,7 @@ export const Details = () => {
 
     const addToCart = () => {
         if (!selectedColor) {
-            alert('Please select a color');
+            warningAlert('Please select a color');
             return;
         }
 
@@ -113,6 +116,7 @@ export const Details = () => {
                 <p className='des'>Product description <br /><br /></p>
                 {location.state.description}
             </div>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 };
