@@ -52,25 +52,39 @@ export const NavBar = () => {
                     <input type="color" className="nav_color-input" width={10} height={10} style={{ position: 'relative', top: '8px', left: '-20px' }} onChange={handleColorChange} alt="" />
                 </button>
 
+                {/* <NavLink
+                    to="/login"
+                    className={`overlay-navbar ${activeLink === "login" ? "active-link" : ""}`} id="userLink"
+                    onClick={() => handleLinkClick("login")}
+                    style={{ color: color.color }}>
+                    {user ? `${user.userName}` : "GUEST"}
 
+                    {user.url ?
+                        <img src={user.url} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
+                        : <img src={defaultImage} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
+                    }
+                </NavLink> */}
+                
                 <NavLink
                     to="/login"
                     className={`overlay-navbar ${activeLink === "login" ? "active-link" : ""}`} id="userLink"
                     onClick={() => handleLinkClick("login")}
                     style={{ color: color.color }}>
                     {user ? `${user.userName}` : "GUEST"}
-                    
-                    {user.url? 
-                    <img src={user.url} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser"/>
-                    : <img src={defaultImage} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
-                    }
+
+                    {user && user.url ? (
+                        <img src={user.url} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
+                    ) : (
+                        <img src={defaultImage} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
+                    )}
                 </NavLink>
+
 
                 <NavLink
                     to="/list"
                     className={`overlay-navbar ${activeLink === "list" ? "active-link" : ""}`}
                     onClick={() => handleLinkClick("list")}
-                    style={{ color: color.color }} 
+                    style={{ color: color.color }}
                 >
                     HOME <img src={home} width={25} height={25} style={{ position: 'relative', top: '6.5px' }} alt="" />
                 </NavLink>
@@ -101,7 +115,7 @@ export const NavBar = () => {
                             to="/addProduct"
                             className={`overlay-navbar ${activeLink === "addProduct" ? "active-link" : ""}`}
                             onClick={() => handleLinkClick("addProduct")}
-                            style={{ color: color.color }} 
+                            style={{ color: color.color }}
                         >
                             ADD
                             <img src={add} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '5px' }} alt="" />
@@ -111,7 +125,7 @@ export const NavBar = () => {
                             to="/update_product"
                             className={`overlay-navbar ${activeLink === "update_product" ? "active-link" : ""}`}
                             onClick={() => handleLinkClick("update_product")}
-                            style={{ color: color.color }} 
+                            style={{ color: color.color }}
                         >
                             UPDATE
                             <img src={update} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '5px' }} alt="" />
@@ -121,7 +135,7 @@ export const NavBar = () => {
                             to="/deleteProduct"
                             className={`overlay-navbar ${activeLink === "deleteProduct" ? "active-link" : ""}`}
                             onClick={() => handleLinkClick("deleteProduct")}
-                            style={{ color: color.color }} 
+                            style={{ color: color.color }}
                         >
                             DELETE
                             <img src={deleteIcon} width={26} height={26} style={{ position: 'relative', top: '6.5px', left: '5px' }} alt="" />
@@ -139,7 +153,7 @@ export const NavBar = () => {
                     </>
                 )}
             </div>
-            
+
             <NavLink to="/list">
                 <img src={F} className="nav_pic" width={130} height={55} style={{ position: 'relative', top: '0', right: '0' }} alt="" />
             </NavLink>
