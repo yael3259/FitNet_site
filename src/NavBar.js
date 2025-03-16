@@ -4,14 +4,11 @@ import { ColorContext } from "./contexts/color_context";
 import F from './files/F.png';
 import email from './files/email.png';
 import { useUserContext } from "./contexts/user_context";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 
 
 export const NavBar = () => {
-    const [userRole, setUserRole] = useState(localStorage.getItem("userRole"));
-    const [userName, setUserName] = useState(localStorage.getItem("userName"));
     const [activeLink, setActiveLink] = useState("");
-    const [url, setUrl] = useState(localStorage.getItem("url") || "https://cdn-icons-png.freepik.com/256/12259/12259393.png");
     const { user } = useUserContext();
     let color = useContext(ColorContext);
 
@@ -64,7 +61,7 @@ export const NavBar = () => {
                         : <img src={defaultImage} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
                     }
                 </NavLink> */}
-                
+
                 <NavLink
                     to="/login"
                     className={`overlay-navbar ${activeLink === "login" ? "active-link" : ""}`} id="userLink"
@@ -108,7 +105,6 @@ export const NavBar = () => {
                 </NavLink>
 
 
-                {/* {userRole === 'ADMIN' && ( */}
                 {user.userRole === 'ADMIN' && (
                     <>
                         <NavLink
