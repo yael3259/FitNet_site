@@ -105,7 +105,7 @@ export const NavBar = () => {
                 </NavLink>
 
 
-                {/* {user.userRole === 'ADMIN' && ( */}
+                {user && user.userRole === 'ADMIN' && (
                     <>
                         <NavLink
                             to="/addProduct"
@@ -147,7 +147,7 @@ export const NavBar = () => {
                             <img src={adminIcon} width={26} height={26} style={{ position: 'relative', top: '6.5px', left: '5px' }} alt="" />
                         </NavLink>
                     </>
-                {/* )} */}
+                )}
             </div>
 
             <NavLink to="/list">

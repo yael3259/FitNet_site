@@ -3,7 +3,8 @@ import axios from "axios";
 
 
 
-let baseUrl = "http://localhost:5000/domain/api/order";
+// let baseUrl = "http://localhost:5000/domain/api/order";
+let baseUrl = "https://fitnet-qclc.onrender.com/domain/api/order";
 
 
 export const getAllorders = (page, perPage, serch) => {
