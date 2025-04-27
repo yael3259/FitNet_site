@@ -125,7 +125,7 @@ const List = () => {
 
             <div className="parallax"></div>
             <div className="overlay">
-                <p className='offer'><img src='https://cdn-icons-png.freepik.com/256/12957/12957298.png?semt=ais_hybrid'
+                <div className='offer'><img src='https://cdn-icons-png.freepik.com/256/12957/12957298.png?semt=ais_hybrid'
                     height={45}
                     width={45}
                     style={{ position: 'relative', top: '6.5px', right: "10px" }}
@@ -134,8 +134,9 @@ const List = () => {
                     <img src='https://cdn-icons-png.freepik.com/256/12957/12957298.png?semt=ais_hybrid'
                         height={45}
                         width={45}
-                        style={{ position: 'relative', top: '6.5px', left: "10px" }} 
-                        id='fire_icon'/></p>
+                        style={{ position: 'relative', top: '6.5px', left: "10px" }}
+                        id='fire_icon' />
+                </div>
 
                 <div className="coupon-container">
                     <div className="coupon">

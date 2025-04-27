@@ -11,10 +11,9 @@ body {
     background-position: center center;
     width: 100vw;
     height: 106.5vh;
-    margin-top: -120px;
+    margin-top: -120px !important;
     margin-bottom: 6%;
     position: relative;
-    z-index: 2;
 }
 
 .lab {
@@ -29,7 +28,6 @@ body {
     height: 66vh;
     background-image: url("./files/B.jpeg");
     filter: grayscale(100%);
-    margin-right: -17px;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -79,6 +77,7 @@ body {
     font-size: 45px;
     color: rgb(255, 0, 0);
     font-weight: bold;
+    padding-bottom: 50px;
     -webkit-text-stroke: 0.4px rgb(0, 0, 0);
 }
 
@@ -332,8 +331,21 @@ body {
         transform: translateX(25%);
     }
 
+    .coupon-container {
+        padding-bottom: 70px;
+    }
+
     .bg {
         height: 114.5vh;
+    }
+
+    .parallax {
+        height: 90vh;
+        background-image: url("./files/B.jpeg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 1;
     }
 
     .header {
@@ -353,6 +365,44 @@ body {
     .logoImage1 {
         margin-top: 5%;
         margin-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid-container_list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .header {
+        font-size: 32px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .offer {
+        font-size: 35px;
+    }
+
+    .coupon-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .coupon {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-input {
+        width: 80%;
+        margin-top: 10px;
     }
 }
 
@@ -385,52 +435,89 @@ body {
 }
 
 @media (max-width: 768px) {
-    .bg {
-        padding-top: 250px;
+    .grid-container_list {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 
-    .load-more-button {
-        transform: translateX(0%);
-        margin-top: 3px;
-    }
-
-    .search-container {
-        transform: translateX(-31%);
-    }
-
-    .coupon {
-        background-color: rgba(255, 255, 255, 0.788);
-        padding: 7px;
-        border-radius: 10px;
-        text-align: center;
-        margin: 10px;
-        width: 200px;
-    }
-
-    .coupon-container {
-        margin: 10px;
-    }
-
-    .lab {
-        color: rgb(255, 134, 134);
-    }
-
-    .coupon button:hover {
-        background-color: #ffd1d1;
-    }
-
-    .coupon-code {
-        font-weight: bold;
-        color: #777777;
-    }
-
-    .search-container {
-        position: sticky;
-        top: 0px;
+    .header {
+        font-size: 28px;
     }
 
     .offer {
+        font-size: 30px;
+    }
+
+    .coupon-container {
+        flex-direction: column;
+        width: 100%;
+        padding: 20px !important;
+        padding-bottom: 200px !important;
+    }
+
+    .coupon {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .search-input {
+        width: 90%;
+    }
+
+    .parallax {
+        height: 100vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .bg {
+        height: 100vh;
+        margin-top: 0;
+    }
+
+    .header {
+        font-size: 24px;
         text-align: center;
+    }
+
+    .offer {
+        margin-top: -20px;
+        letter-spacing: 1px;
+        font-size: 22px;
+        color: #ff1212;
+    }
+
+    #fire_icon {
+        height: 30px;
+        width: 30px;
+    }
+
+    .coupon-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .coupon {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .logoImage {
+        width: 100px;
+        height: 50px;
+    }
+
+    .logoImage1 {
+        width: 180px;
+        height: 90px;
+    }
+
+    .container_list {
+        padding-top: 10%;
     }
 }
 
@@ -481,7 +568,6 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding-right: 0;
     }
 
     .coupon {
@@ -492,6 +578,7 @@ body {
         width: 350px;
         height: 120px;
         font-size: 20px;
+        margin: 20px;
     }
 
     .coupon p {
