@@ -1,9 +1,9 @@
-import "./NavBar.css";
+import "../styles/NavBar.css";
 import { NavLink } from "react-router-dom";
-import { ColorContext } from "./contexts/color_context";
-import F from './files/F.png';
-import email from './files/email.png';
-import { useUserContext } from "./contexts/user_context";
+import { ColorContext } from "../contexts/color_context";
+import F from '../files/F.png';
+import email from '../files/email.png';
+import { useUserContext } from "../contexts/user_context";
 import { useState, useContext } from "react";
 
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ListItem from './ListItem';
-import { getAllProduct } from './productApi';
-import './List.css';
+import { getAllProduct } from '../../routes/productApi';
+import '../../styles/product/List.css';
 import { MiniBasket } from "./MiniBasket";
 import { Link } from 'react-router-dom';
 import F from './files/F.png';
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCheck, faCopy, faL } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
+import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
 
 
 

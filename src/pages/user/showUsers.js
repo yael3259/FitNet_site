@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { getAllUsers, deleteUser } from "./userApi";
+import { getAllUsers, deleteUser } from "../../routes/userApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
-import "./showUsers.css";
+import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import "../../styles/user/showUsers.css";
 
 
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Update.css';
+import '../styles/Update.css';
 
 
 

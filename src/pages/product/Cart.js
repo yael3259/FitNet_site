@@ -1,15 +1,15 @@
 import { useState, useEffect, React } from "react";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { AddOrder } from "../order/orderApi";
+import { AddOrder } from "../../routes/orderApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
+import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import "./Cart.css";
+import "../../styles/product/Cart.css";
 
 
 export const CartShopping = () => {

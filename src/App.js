@@ -1,25 +1,26 @@
 import React from 'react';
 import './app.css';
 import { Routes, Route } from "react-router-dom";
-import { RegistrationPage } from './features/user/sign_in';
-import LoginForm from './features/user/loginPage';
-import { ShowAllUsers } from './features/user/showUsers';
-import { ShowAllOrders } from './features/order/showOrders';
+import { RegistrationPage } from './pages/user/sign_in';
+import LoginForm from './pages/user/loginPage';
+import { ShowAllUsers } from './pages/user/showUsers';
+import { ShowAllOrders } from './pages/order/showOrders';
 import { useState } from 'react';
-import { ResetPassword } from './features/user/forgotPassword';
-import List from './features/product/List';
-import { AddProductForm } from './features/product/AddProduct';
-import { UpdateProductForm } from './features/product/UpdateProduct';
-import { DeleteProductForm } from './features/product/DeleteProduct';
-import { Details } from './features/product/Details';
-import { NavBar } from './NavBar';
+import { ResetPassword } from './pages/user/forgotPassword';
+import List from './pages/product/List';
+import { AddProductForm } from './pages/product/AddProduct';
+import { UpdateProductForm } from './pages/product/UpdateProduct';
+import { DeleteProductForm } from './pages/product/DeleteProduct';
+import { Details } from './pages/product/Details';
+// import { NavBar } from '.styles/NavBar';
+import { NavBar } from './components/NavBar';
 import { ColorContext } from "./contexts/color_context";
 import { UserProvider } from "./contexts/user_context";
-import { Contact } from './contactPage';
-import { CartShopping } from './features/product/Cart';
-import { Update } from './Update';
-import { UpdateOrder } from './features/order/Update_Order';
-import { Admin } from './Admin';
+import { Contact } from './pages/contactPage';
+import { CartShopping } from './pages/product/Cart';
+import { Update } from './pages/Update';
+import { UpdateOrder } from './pages/order/Update_Order';
+import { Admin } from './pages/Admin';
 
 
 

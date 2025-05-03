@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
-import { addUser } from './userApi';
-import './sign_in.css';
+import { faildAlert, successAlert } from "../../components/alerts/All_Alerts";
+import { addUser } from '../../routes/userApi';
+import '../../styles/user/sign_in.css';
 import { FaUser, FaLock, FaEnvelope, FaLink } from 'react-icons/fa';
 
 

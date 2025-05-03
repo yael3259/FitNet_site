@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { getProductById, deleteProduct } from './productApi';
+import { getProductById, deleteProduct } from '../../routes/productApi';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
-import './DeleteProduct.css';
+import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import '../../styles/product/DeleteProduct.css';
+
 
 
 

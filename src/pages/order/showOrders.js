@@ -1,10 +1,10 @@
-import { getAllorders, deleteOrder } from "./orderApi";
+import { getAllorders, deleteOrder } from "../../routes/orderApi";
 import { useState, useEffect } from "react";
 import { FaEdit, FaShippingFast } from 'react-icons/fa';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
-import "./showOrders.css";
+import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import "../../styles/order/showOrders.css";
 import { Link } from "react-router-dom";
 
 

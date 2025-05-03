@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { addProduct } from "./productApi";
+import { addProduct } from "../../routes/productApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
-import './AddProduct.css';
+import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import '../../styles/product/AddProduct.css';
 
 
 
@@ -12,7 +12,6 @@ export function AddProductForm() {
 
     const onSubmit = async (data) => {
         console.log(data);
-
         try {
             let res = await addProduct(data);
             successAlert("This product has been successfully added");

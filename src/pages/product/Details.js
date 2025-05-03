@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../alerts/All_Alerts";
+import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
 import { MiniBasket } from './MiniBasket';
-import './Details.css';
+import '../../styles/product/Details.css';
 import { useLocation } from 'react-router-dom';
 
 

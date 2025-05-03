@@ -1,4 +1,4 @@
-import "./List.css";
+import "../../styles/product/List.css";
 
 
 

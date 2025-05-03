@@ -5,7 +5,7 @@ body {
 }
 
 .bg {
-    background-image: url("./files/Y.jpg");
+    background-image: url("../../pages/product/files/Y.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -26,7 +26,7 @@ body {
 
 .parallax {
     height: 66vh;
-    background-image: url("./files/B.jpeg");
+    background-image: url("../../pages/product/files/B.jpeg");
     filter: grayscale(100%);
     background-attachment: fixed;
     background-size: cover;
@@ -341,7 +341,7 @@ body {
 
     .parallax {
         height: 90vh;
-        background-image: url("./files/B.jpeg");
+        background-image: url("../../pages/product/files/B.jpeg");
         background-size: cover;
         background-position: center;
         position: relative;
