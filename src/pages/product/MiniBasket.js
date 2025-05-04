@@ -1,13 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
 import "../../styles/product/MiniBasket.css";
 
 
 
-export const MiniBasket = ({ cartItems, setCartItems, quantity }) => {
+export const MiniBasket = ({ cartItems, setCartItems }) => {
 
     const handleRemoveItem = (itemToRemove) => {
         const updatedCart = cartItems.filter(item => item._id !== itemToRemove._id);

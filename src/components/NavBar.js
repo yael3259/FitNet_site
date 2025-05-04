@@ -49,19 +49,6 @@ export const NavBar = () => {
                     <input type="color" className="nav_color-input" width={10} height={10} style={{ position: 'relative', top: '8px', left: '-20px' }} onChange={handleColorChange} alt="" />
                 </button>
 
-                {/* <NavLink
-                    to="/login"
-                    className={`overlay-navbar ${activeLink === "login" ? "active-link" : ""}`} id="userLink"
-                    onClick={() => handleLinkClick("login")}
-                    style={{ color: color.color }}>
-                    {user ? `${user.userName}` : "GUEST"}
-
-                    {user.url ?
-                        <img src={user.url} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
-                        : <img src={defaultImage} width={25} height={25} style={{ position: 'relative', top: '6.5px', left: '6px' }} alt="" id="urlPicUser" />
-                    }
-                </NavLink> */}
-
                 <NavLink
                     to="/login"
                     className={`overlay-navbar ${activeLink === "login" ? "active-link" : ""}`} id="userLink"

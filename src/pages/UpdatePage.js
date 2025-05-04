@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import '../styles/Update.css';
+import '../styles/UpdatePage.css';
 
 
 
-export const Update = () => {
+export const UpdatePage = () => {
     return (
         <div className='up_form'>
             <p className='up_p'>What to update?</p>

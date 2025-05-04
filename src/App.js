@@ -1,32 +1,29 @@
 import React from 'react';
 import './app.css';
 import { Routes, Route } from "react-router-dom";
-import { RegistrationPage } from './pages/user/sign_in';
-import LoginForm from './pages/user/loginPage';
-import { ShowAllUsers } from './pages/user/showUsers';
-import { ShowAllOrders } from './pages/order/showOrders';
+import { RegistrationPage } from './pages/user/Signin';
+import LoginForm from './pages/user/LoginPage';
+import { ShowAllUsers } from './pages/user/ShowUsers';
+import { ShowAllOrders } from './pages/order/ShowOrders';
 import { useState } from 'react';
-import { ResetPassword } from './pages/user/forgotPassword';
+import { ResetPassword } from './pages/user/ForgotPassword';
 import List from './pages/product/List';
 import { AddProductForm } from './pages/product/AddProduct';
 import { UpdateProductForm } from './pages/product/UpdateProduct';
 import { DeleteProductForm } from './pages/product/DeleteProduct';
 import { Details } from './pages/product/Details';
-// import { NavBar } from '.styles/NavBar';
 import { NavBar } from './components/NavBar';
 import { ColorContext } from "./contexts/color_context";
 import { UserProvider } from "./contexts/user_context";
-import { Contact } from './pages/contactPage';
+import { Contact } from "./pages/ContactPage";
 import { CartShopping } from './pages/product/Cart';
-import { Update } from './pages/Update';
+import { UpdatePage } from './pages/UpdatePage';
 import { UpdateOrder } from './pages/order/Update_Order';
 import { Admin } from './pages/Admin';
 
 
 
 function App() {
-
-  // useContext-צבעים
   let [selectC, setSelectC] = useState("green");
 
   const cangeColor = (x) => {
@@ -50,7 +47,7 @@ function App() {
         <Route path='showUsers' element={<ShowAllUsers />} />
         <Route path='reset_pass' element={<ResetPassword />} />
         <Route path='addProduct' element={<AddProductForm />} />
-        <Route path='update' element={<Update />} />
+        <Route path='update' element={<UpdatePage />} />
         <Route path='update_product' element={<UpdateProductForm />} />
         <Route path='update_order/:orderId' element={<UpdateOrder />} />
         <Route path='showOrders' element={<ShowAllOrders />} />

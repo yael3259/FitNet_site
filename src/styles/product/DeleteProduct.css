@@ -1,8 +1,8 @@
-.body_delete{
+.body_delete {
     background-color: transparent;
 }
 
-.del_div{
+.del_div {
     background-color: #1c252b;
     padding-top: 3%;
 }
@@ -29,7 +29,6 @@
 .search-form {
     background-color: #1c252b !important;
     background-size: 100%;
-    /* padding-bottom: 125px; */
     padding-bottom: 200px;
 }
 
@@ -54,8 +53,6 @@
 }
 
 .body {
-    /* padding-top: 3%;
-    padding-bottom: 3%; */
     padding: 3%;
     background-color: #1c252b !important;
     text-align: center;
@@ -94,29 +91,6 @@
 .transparent-input:focus {
     border: 2px solid #4caf50;
 }
-
-/* .search_button {
-    align-self: center;
-    margin-right: 20px;
-} */
-
-/* .search_button {
-    background-color: transparent;
-    border: 2px solid #4caf50;
-    border-radius: 5px !important;
-    color: rgb(255, 255, 255);
-    font-size: 25px !important;
-    padding: 6px !important;
-    width: 130px !important;
-    outline: none;
-    margin-left: 3px;
-} */
-
-/* .search_button:focus {
-    border: 2px solid #85d787;
-    background-color: #77f379;
-    color: #3e3e3e;
-} */
 
 .search_button {
     background-color: transparent;
@@ -256,7 +230,7 @@ span {
         margin: -300px 0 0 -120px;
     }
 
-    #deleteSearchSaction{
+    #deleteSearchSaction {
         margin-top: 0% !important;
     }
 
@@ -277,9 +251,10 @@ span {
         margin-left: 130px;
     }
 
-    .reset_button{
+    .reset_button {
         margin-bottom: 0;
     }
+
     .body2 {
         text-align: center;
         align-self: center;

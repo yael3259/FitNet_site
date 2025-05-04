@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/contactPage.css";
+import "../styles/ContactPage.css";
 
 
 
@@ -50,26 +50,26 @@ export const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     if (!fullname || !email || !message) {
       setErrorMessage("Please fill out all fields");
       setSuccessMessage('');
       return;
     }
-  
+
     if (!validateEmail(email)) {
       setErrorMessage("Please enter a valid email address");
       setSuccessMessage('');
       return;
     }
-  
+
     try {
       const response = await fetch("http://localhost:5000/domain/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fullname, email, message }),
       });
-  
+
       const data = await response.json();
       if (response.ok) {
         setSuccessMessage(data.message);
@@ -83,7 +83,6 @@ export const Contact = () => {
       setErrorMessage("Failed to send message");
     }
   };
-  
 
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,6}$/;

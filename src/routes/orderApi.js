@@ -15,10 +15,6 @@ export const getOrderById = (id) => {
     return axios.get(`${baseUrl}/${id}`);
 }
 
-// export const updateOrder = (data) => {
-//     console.log("API: ", data);
-//     return axios.post(baseUrl, data);
-// };
 export const updateOrder = (id, data) => {
     console.log("API: ", data);
     return axios.put(`${baseUrl}/${id}`, data);

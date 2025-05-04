@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import ListItem from './ListItem';
-import { getAllProduct } from '../../routes/productApi';
+import { getAllProduct } from '../../routes/ProductApi';
 import '../../styles/product/List.css';
 import { MiniBasket } from "./MiniBasket";
 import { Link } from 'react-router-dom';
 import F from './files/F.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCheck, faCopy, faL } from '@fortawesome/free-solid-svg-icons';
-import { ToastContainer, toast } from "react-toastify";
+import { faSearch, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import { faildAlert } from "../../components/Alerts";
 
 
 
@@ -19,9 +19,9 @@ const List = () => {
     const [searchText, setSearchText] = useState(''); // חיפוש
     const [cartItems, setCartItems] = useState([]); // פריטים בסל
     const [loading, setLoading] = useState(false); // האם טעינה מתבצעת
-    const [hoveredProductId, setHoveredProductId] = useState(null); // מוצר ממוסך
-    const [hoveredImage, setHoveredImage] = useState(null); // תמונה ממוסכת
-    const [showMiniBasket, setShowMiniBasket] = useState(false); // האם להציג סל מוקט
+    const [hoveredProductId, setHoveredProductId] = useState(null); // מוצר בודד
+    const [hoveredImage, setHoveredImage] = useState(null); // תמונת מוצר בודד
+    const [showMiniBasket, setShowMiniBasket] = useState(false); // האם להציג סל מוקטן
     const [closeTimeout, setCloseTimeout] = useState(null); // זמן סגירת סל מוקטן
     const [copiedCode, setCopiedCode] = useState(null); // קופון הנחה
 
