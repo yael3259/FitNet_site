@@ -1,4 +1,4 @@
-import '../../styles/order/Update_Order.css';
+import '../../styles/order/UpdateOrder.css';
 import { useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { updateOrder } from '../../routes/OrderApi';

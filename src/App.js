@@ -18,7 +18,7 @@ import { UserProvider } from "./contexts/user_context";
 import { Contact } from "./pages/ContactPage";
 import { CartShopping } from './pages/product/Cart';
 import { UpdatePage } from './pages/UpdatePage';
-import { UpdateOrder } from './pages/order/Update_Order';
+import { UpdateOrder } from './pages/order/UpdateOrder';
 import { Admin } from './pages/Admin';
 
 
