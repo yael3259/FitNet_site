@@ -3,10 +3,8 @@
     direction: rtl;
     margin-left: 3.5%;
     margin-right: 5%;
-    /* overflow: hidden; */
     padding-top: 6%;
     margin-top: 11%;
-    /* position: relative; */
     display: flex;
     align-items: center;
 }
@@ -31,7 +29,6 @@
     position: absolute;
     margin-right: 32%;
     margin-bottom: 3%;
-    /* margin-left: 37%; */
 }
 
 .c {
@@ -348,7 +345,8 @@
         margin: auto;
     }
 
-    .d1, .d2 {
+    .d1,
+    .d2 {
         text-align: center;
     }
 }
@@ -358,7 +356,7 @@
         text-align: center;
     }
 
-    .img_detail{
+    .img_detail {
         margin-top: 70px;
     }
 }

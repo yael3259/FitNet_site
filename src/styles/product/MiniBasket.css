@@ -163,7 +163,7 @@
         width: 80%;
         height: 50vh;
         margin-left: 10%;
-        translateX: (-50%);
+        transform: translateX(-50%);
         background-color: rgb(255, 227, 199);
     }
 

@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { addProduct } from "../../routes/productApi";
-import { ToastContainer, toast } from "react-toastify";
+import { addProduct } from "../../routes/ProductApi";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import { faildAlert, successAlert } from "../../components/Alerts";
 import '../../styles/product/AddProduct.css';
 
 
@@ -71,13 +71,6 @@ export function AddProductForm() {
                         <input type="url" id="urlImage" className="transparent-input transition-element" {...register('urlImage')} />
                     </div>
                     <br></br><br></br>
-
-                    {/* <div className="label-container">
-                        <label htmlFor="file" className="label transition-element">Upload Image</label>
-                        <input type="file" id="fileImage" className="transparent-input transition-element"
-                            {...register('image')} />
-                    </div>
-                    <br></br><br></br> */}
 
                     <button type="submit" className="submit_addPage">Submit</button>
                 </div>

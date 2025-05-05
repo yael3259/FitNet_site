@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { getProductById, updateProduct } from '../../routes/productApi';
-import { ToastContainer, toast } from "react-toastify";
+import { getProductById, updateProduct } from '../../routes/ProductApi';
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import { faildAlert, successAlert } from "../../components/Alerts";
 import '../../styles/product/UpdateProduct.css';
 
 
@@ -106,10 +106,6 @@ export function UpdateProductForm() {
                                 <label htmlFor="image" className="label transition-element">Image URL</label>
                                 <input type="url" id="urlImage" className="transparent-input transition-element" {...register('urlImage')} />
                             </div>
-
-                            {/* <div>
-                                <img src="https://www.misgeret.co.il/wht_Images/catalog/subject/image_content_597.jpg.webp"/>
-                            </div> */}
                             <br></br><br></br><br></br>
 
                             <button type="submit" className="submit_updatePage">Submit</button>

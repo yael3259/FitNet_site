@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert } from "../../components/alerts/All_Alerts";
-import { addUser } from '../../routes/userApi';
-import '../../styles/user/sign_in.css';
+import { faildAlert, successAlert } from "../../components/Alerts";
+import { addUser } from '../../routes/UserApi';
+import '../../styles/user/Signin.css';
 import { FaUser, FaLock, FaEnvelope, FaLink } from 'react-icons/fa';
 
 

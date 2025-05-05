@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
-import axios from "axios";
-import { resetPasswordUser } from "../../routes/userApi";
+import { resetPasswordUser } from "../../routes/UserApi";
 import { FaLock } from 'react-icons/fa';
-import "../../styles/user/forgotPassword.css";
+import "../../styles/user/ForgotPassword.css";
 
 
 export const ResetPassword = () => {
@@ -60,7 +58,8 @@ export const ResetPassword = () => {
                     /></div>
 
                 <div className="input-container">
-                    <FaLock className="input-icon" />                    <input
+                    <FaLock className="input-icon" />
+                    <input
                         id="password"
                         name="password"
                         type="password"

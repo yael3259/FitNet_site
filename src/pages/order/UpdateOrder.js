@@ -1,10 +1,10 @@
-import '../../styles/order/Update_Order.css';
+import '../../styles/order/UpdateOrder.css';
 import { useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
-import { updateOrder } from '../../routes/orderApi';
-import { ToastContainer, toast } from "react-toastify";
+import { updateOrder } from '../../routes/OrderApi';
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import { faildAlert, successAlert, warningAlert } from "../../components/Alerts";
 
 
 

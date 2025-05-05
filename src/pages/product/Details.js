@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
+import { warningAlert } from "../../components/Alerts";
 import { MiniBasket } from './MiniBasket';
 import '../../styles/product/Details.css';
 import { useLocation } from 'react-router-dom';
+
 
 
 export const Details = () => {

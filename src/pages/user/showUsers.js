@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { getAllUsers, deleteUser } from "../../routes/userApi";
-import { ToastContainer, toast } from "react-toastify";
+import { getAllUsers, deleteUser } from "../../routes/UserApi";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faildAlert, successAlert, warningAlert } from "../../components/alerts/All_Alerts";
-import "../../styles/user/showUsers.css";
+import { faildAlert, successAlert } from "../../components/Alerts";
+import "../../styles/user/ShowUsers.css";
 
 
 
@@ -13,6 +13,10 @@ export const ShowAllUsers = () => {
     const [removedUser, setRemovedUser] = useState(null);
     const [showRemoveModal, setShowRemoveModal] = useState(false);
 
+
+    useEffect(() => {
+        fetchAllUsers();
+    }, []);
 
     const fetchAllUsers = async () => {
         try {
@@ -34,14 +38,9 @@ export const ShowAllUsers = () => {
         }
     };
 
-
     const closeRemoveModal = () => {
         setShowRemoveModal(false);
     };
-
-    useEffect(() => {
-        fetchAllUsers();
-    }, []);
 
 
     return (
